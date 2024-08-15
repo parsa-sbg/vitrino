@@ -1,5 +1,9 @@
+import Logo from "../components/Logo"
+
 export default function Home() {
   return (
-    <div className="text-secondary">Home</div>
+    <div className="felx flex-col">
+      <Logo/>
+    </div>
   )
 }
