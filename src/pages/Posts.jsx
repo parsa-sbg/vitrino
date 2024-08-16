@@ -1,6 +1,14 @@
+import Header from "../components/Header/Header"
+
 
 export default function Posts() {
-  return (
-    <div>Posts</div>
-  )
+    return (
+        <>
+            <Header />
+
+            <div className="">
+                
+            </div>
+        </>
+    )
 }

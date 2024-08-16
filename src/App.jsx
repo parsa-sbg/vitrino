@@ -4,7 +4,7 @@ import Routes from './routes'
 function App() {
 
   return (
-    <div className='app container text-gray-500'>
+    <div className='app text-gray-500'>
       <Routes />
     </div>
   )
