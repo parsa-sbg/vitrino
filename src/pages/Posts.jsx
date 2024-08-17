@@ -1,4 +1,6 @@
+import BottomNav from "../components/BottomNav/BottomNav"
 import Header from "../components/Header/Header"
+
 
 
 export default function Posts() {
@@ -9,6 +11,8 @@ export default function Posts() {
             <div className="">
                 
             </div>
+
+            <BottomNav/>
         </>
     )
 }
