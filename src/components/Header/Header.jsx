@@ -8,7 +8,7 @@ import SiteBtn from "../SiteBtn";
 
 export default function Header() {
     return (
-        <div className=" md:border-b-2 fixed top-0 right-0 left-0">
+        <div className=" md:border-b-2 fixed top-0 right-0 left-0 bg-white dark:bg-[#222] md:dark:bg-[#242424]">
             <div className="container flex py-3 gap-4 justify-between items-center">
 
                 {/* header right */}
