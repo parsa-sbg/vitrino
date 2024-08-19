@@ -1,5 +1,6 @@
 import { useCallback } from "react"
 import RangeFilter from "./RangeFilter"
+import Accordion from "./Accordion"
 
 // const filters = [
 //     {
@@ -78,7 +79,9 @@ export default function FiltersList() {
 
     return (
         <div className="">
-            <RangeFilter callBack={priceChangeHandler} minPlaceHolder={"مثلاً ۱۰,۰۰۰,۰۰۰"} maxPlaceHolder={'مثلاً ۱۰۰,۰۰۰,۰۰۰'} />
+            <Accordion name={'قیمت'} >
+                <RangeFilter callBack={priceChangeHandler} minPlaceHolder={"مثلاً ۱۰,۰۰۰,۰۰۰"} maxPlaceHolder={'مثلاً ۱۰۰,۰۰۰,۰۰۰'} />
+            </Accordion>
         </div>
     )
 }
