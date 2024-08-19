@@ -1,6 +1,5 @@
 import Logo from "../Logo"
 import HeaderCitySelectBtn from "./HeaderCitySelectBtn";
-import HeaderCategories from "./HeaderCategories";
 import HeaderSearchBar from "./HeaderSearchBar";
 import HeaderMyVitrin from "./HeaderMyVitrin";
 import SiteBtn from "../SiteBtn";
@@ -18,9 +17,6 @@ export default function Header() {
 
                     <div> <HeaderCitySelectBtn /> </div>
                     
-
-                    <div className="hidden md:block"> <HeaderCategories /> </div>
-
                     <div className="w-full md:max-w-96"> <HeaderSearchBar /> </div>
 
                 </div>
