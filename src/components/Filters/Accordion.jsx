@@ -4,8 +4,6 @@ import { FaAngleDown } from "react-icons/fa6";
 
 
 export default function Accordion({ children, name }) {
-
-    console.log(children);
     
     const [isAccordionOpen, setIsAccordionOpen] = useState(false)
 
@@ -14,9 +12,9 @@ export default function Accordion({ children, name }) {
     }
 
     return (
-        <div className='border-y-2 dark:border-gray-500 pb-3'>
+        <div className='border-b-2 dark:border-[#333] pb-3'>
 
-            <button aria-expanded={isAccordionOpen} className='text-[#333] font-semibold py-3 w-full text-right flex items-center gap-2' onClick={toggleAccordion}>
+            <button aria-expanded={isAccordionOpen} className='text-[#333] dark:text-gray-400 font-semibold pb-3 w-full text-right flex items-center gap-2' onClick={toggleAccordion}>
                 <FaAngleDown className={` ${isAccordionOpen && '-scale-y-[1]'} transition-all duration-300`} />
                 {name}
             </button>

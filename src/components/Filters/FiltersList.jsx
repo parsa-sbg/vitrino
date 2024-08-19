@@ -1,6 +1,7 @@
 import { useCallback } from "react"
 import RangeFilter from "./RangeFilter"
 import Accordion from "./Accordion"
+import CheckBoxFilter from "./CheckBoxFilter"
 
 // const filters = [
 //     {
@@ -77,10 +78,21 @@ export default function FiltersList() {
         console.log(res)
     }, [])
 
+
+    const checkboxChangeHandler = useCallback((res) => {
+        console.log(res)
+    }, [])
+
+
     return (
-        <div className="">
+        <div className="flex flex-col gap-4">
             <Accordion name={'قیمت'} >
                 <RangeFilter callBack={priceChangeHandler} minPlaceHolder={"مثلاً ۱۰,۰۰۰,۰۰۰"} maxPlaceHolder={'مثلاً ۱۰۰,۰۰۰,۰۰۰'} />
+            </Accordion>
+
+            <Accordion name={'وضعیت آگهی'}>
+                <div className="my-4"><CheckBoxFilter name={'عکس دار'} callBack={checkboxChangeHandler} /></div>
+                <div className="my-4"><CheckBoxFilter name={'فوری'} callBack={checkboxChangeHandler} /></div>
             </Accordion>
         </div>
     )
