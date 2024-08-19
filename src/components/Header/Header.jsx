@@ -14,7 +14,7 @@ export default function Header() {
                 {/* header right */}
                 <div className="w-full flex flex-row-reverse md:flex-row gap-0 md:gap-2 items-center">
 
-                    <div className="hidden md:block w-52 border-l-2 pl-5"><Logo /></div>
+                    <div className="hidden md:block border-l-2 pl-5"><Logo link /></div>
 
                     <div> <HeaderCitySelectBtn /> </div>
                     

@@ -18,7 +18,7 @@ export default function Home() {
     <div className="container flex flex-col items-center gap-5 sm:gap-10 max-w-[566px] mx-auto mb-5 mt-4 md:mt-10">
 
 
-      <div className="w-40"><Logo /></div>
+      <div className=""><Logo /></div>
 
       {/* Quick access */}
       <div className="flex justify-around items-center pb-4 border-b-2 w-full text-xs gap-3">
