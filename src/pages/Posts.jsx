@@ -2,6 +2,7 @@ import BottomNav from "../components/BottomNav/BottomNav"
 import Header from "../components/Header/Header"
 import PostBox from "../components/PostsPage/PostBox"
 import PostsPageCatSelector from "../components/PostsPage/PostsPageCatSelector"
+import FiltersList from "../components/Filters/FiltersList"
 
 
 
@@ -14,6 +15,7 @@ export default function Posts() {
 
                 <div className="hidden md:flex md:col-span-4 lg:col-span-3 xl:col-span-3 sticky top-20 overflow-y-scroll h-[calc(100vh-100px)] no-scrollbar p-3 flex-col gap-5">
                     <PostsPageCatSelector />
+                    <FiltersList />
                 </div>
 
                 <div className="col-span-12 md:col-span-8 lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
