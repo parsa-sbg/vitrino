@@ -4,14 +4,15 @@ import PostBox from "../components/PostsPage/PostBox"
 import PostsPageCatSelector from "../components/PostsPage/PostsPageCatSelector"
 import FiltersList from "../components/Filters/FiltersList"
 import { useLocations } from "../hooks/useLocations"
-import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal" 
+import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal"
+import { memo } from "react"
 
 
-export default function Posts() {
+export default memo(function Posts() {
 
-    const {isCitySelectorModalOpen} = useLocations()
+    const { isCitySelectorModalOpen } = useLocations()
 
-    
+
     return (
         <>
             <Header />
@@ -41,4 +42,4 @@ export default function Posts() {
             <BottomNav />
         </>
     )
-}
+})

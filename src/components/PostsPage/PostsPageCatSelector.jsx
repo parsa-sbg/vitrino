@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { memo, useState } from "react"
 import { FaAngleLeft } from "react-icons/fa6";
 
 const allCats = [
@@ -65,7 +65,7 @@ const allCats = [
     }
 ]
 
-export default function PostsPageCatSelector() {
+export default memo(function PostsPageCatSelector() {
 
     const [openCatIds, setOpenCatIds] = useState([])
     const [selectedCatId, setSelectedCatId] = useState(null)
@@ -136,4 +136,4 @@ export default function PostsPageCatSelector() {
                 ))}
             </ul>
         </div>)
-}
+})

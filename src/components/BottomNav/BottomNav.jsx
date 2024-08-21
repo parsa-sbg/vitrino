@@ -3,9 +3,10 @@ import { IoList } from "react-icons/io5";
 import { FaPlusCircle } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { BsShopWindow } from "react-icons/bs";
+import { memo } from "react";
 
 
-export default function BottomNav() {
+export default memo(function BottomNav() {
     return (
         <div className="border-t-2 fixed bottom-0 right-0 left-0 bg-white dark:bg-[#222]">
             <div className="md:hidden grid grid-cols-4">
@@ -33,4 +34,4 @@ export default function BottomNav() {
             </div>
         </div>
     )
-}
+})

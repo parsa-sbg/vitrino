@@ -39,40 +39,40 @@ export default function LocationsProvider({ children }) {
         setIsCitySelectorModalOpen(true)
     }
 
-    const closeCitySelectorModal = () => {
+    const closeCitySelectorModal = useCallback(() => {
         setIsCitySelectorModalOpen(false)
-    }
+    }, [])
 
-    const removeSelectedCity = (cityId) => {
+    const removeSelectedCity = useCallback((cityId) => {
         setSelectedCities(prev => prev.filter(city => city.id !== cityId))
-    }
+    }, [])
 
-    const addSelectedCity = (cityId, cityName) => {
+    const addSelectedCity = useCallback((cityId, cityName) => {
         setSelectedCities(prev => [...prev, { name: cityName, id: cityId }])
-    }
+    }, [])
 
-    const cancelSelectedCities = () => {
+    const cancelSelectedCities = useCallback(() => {
         setSelectedCities(confirmedCities)
-    }
+    }, [confirmedCities])
 
-    const confirmSelectedCities = () => {
+    const confirmSelectedCities = useCallback(() => {
         setConfirmedCities(selectedCities)
-    }
+    }, [selectedCities])
 
     const isThisCitySelected = useCallback((cityId) => {
         const result = selectedCities.some(city => city.id == cityId)
         return result
     }, [selectedCities])
 
-    const isThereAnyValidChange = () => {
+    const isThereAnyValidChange = useCallback(() => {
         if (!selectedCities.length) return false
         const result = Boolean(JSON.stringify(confirmedCities) !== JSON.stringify(selectedCities))
         return result
-    }
+    }, [selectedCities, confirmedCities])
 
-    const removeAllSelectedCities = () => {
+    const removeAllSelectedCities = useCallback(() => {
         setSelectedCities([])
-    }
+    }, [])
 
     return (
         <LocationsContext.Provider

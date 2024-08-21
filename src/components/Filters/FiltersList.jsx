@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { memo, useCallback } from "react"
 import RangeFilter from "./RangeFilter"
 import Accordion from "./Accordion"
 import CheckBoxFilter from "./CheckBoxFilter"
@@ -72,7 +72,7 @@ import CheckBoxFilter from "./CheckBoxFilter"
 // ]
 
 
-export default function FiltersList() {
+export default memo(function FiltersList() {
 
     const priceChangeHandler = useCallback((res) => {
         // console.log(res)
@@ -96,6 +96,6 @@ export default function FiltersList() {
             </Accordion>
         </div>
     )
-}
+})
 
 
