@@ -2,7 +2,6 @@ import propTypes from 'prop-types'
 import SelectedCitiesSlider from './SelectedCitiesSlider/SelectedCitiesSlider'
 import CitiesList from './CitiesList/CitiesList'
 import Cover from './Cover'
-import { useLocations } from '../../hooks/useLocations'
 import CancelBtn from './CancelBtn'
 import ConfirmBtn from './ConfirmBtn'
 import SearchInput from './SearchInput'
@@ -10,8 +9,6 @@ import RemoveAllCitiesBtn from './RemoveAllCitiesBtn'
 
 
 export default function CitySelectorModal() {
-
-    const { setIsCitySelectorModalOpen } = useLocations()
 
 
     return (
@@ -40,7 +37,7 @@ export default function CitySelectorModal() {
             </div>
 
 
-            <Cover setIsCitySelectorModalOpen={setIsCitySelectorModalOpen} />
+            <Cover />
 
         </div>
     )

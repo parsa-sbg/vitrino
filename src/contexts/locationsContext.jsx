@@ -62,11 +62,14 @@ export default function LocationsProvider({ children }) {
         return result
     }, [selectedCities])
 
-
     const isThereAnyValidChange = () => {
         if (!selectedCities.length ) return false
         const result = Boolean(JSON.stringify(confirmedCities) !== JSON.stringify(selectedCities))
         return result
+    }
+
+    const removeAllSelectedCities = () => {
+        setSelectedCities([])
     }
 
     return (
@@ -81,11 +84,11 @@ export default function LocationsProvider({ children }) {
                 removeSelectedCity,
                 addSelectedCity,
                 confirmedCities,
-                setConfirmedCities,
                 cancelSelectedCities,
                 confirmSelectedCities,
                 isThisCitySelected,
-                isThereAnyValidChange
+                isThereAnyValidChange,
+                removeAllSelectedCities
             }}>
             {children}
         </LocationsContxt.Provider>
