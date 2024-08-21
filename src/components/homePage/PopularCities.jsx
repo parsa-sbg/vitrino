@@ -5,7 +5,6 @@ export default function PopularCities() {
 
 
     const { popularCities, setSingleCityAsConfirmed } = useLocations()
-    console.log(popularCities);
 
 
     return (
