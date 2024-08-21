@@ -4,7 +4,7 @@ import { useLocations } from "../../hooks/useLocations";
 
 export default function HeaderCitySelectBtn() {
 
-    const { openCitySelectorModal } = useLocations()
+    const { openCitySelectorModal, confirmedCities } = useLocations()
 
 
     return (
@@ -13,7 +13,7 @@ export default function HeaderCitySelectBtn() {
             before:h-7 before:w-px before:absolute before:right-0 before:bg-gray-300 md:before:hidden
             ">
             <SlLocationPin />
-            ۱۳ شهر
+            {confirmedCities.length == 1 ? `${confirmedCities[0].name}` : `${confirmedCities.length} شهر`}
         </button>
     )
 }
