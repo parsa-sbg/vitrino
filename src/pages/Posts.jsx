@@ -3,10 +3,15 @@ import Header from "../components/Header/Header"
 import PostBox from "../components/PostsPage/PostBox"
 import PostsPageCatSelector from "../components/PostsPage/PostsPageCatSelector"
 import FiltersList from "../components/Filters/FiltersList"
-
+import { useLocations } from "../hooks/useLocations"
+import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal" 
 
 
 export default function Posts() {
+
+    const {isCitySelectorModalOpen} = useLocations()
+
+    
     return (
         <>
             <Header />
@@ -29,6 +34,7 @@ export default function Posts() {
                     <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
                 </div>
 
+                {isCitySelectorModalOpen && <CitySelectorModal />}
 
             </div>
 

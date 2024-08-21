@@ -75,12 +75,12 @@ import CheckBoxFilter from "./CheckBoxFilter"
 export default function FiltersList() {
 
     const priceChangeHandler = useCallback((res) => {
-        console.log(res)
+        // console.log(res)
     }, [])
 
 
     const checkboxChangeHandler = useCallback((res) => {
-        console.log(res)
+        // console.log(res)
     }, [])
 
 

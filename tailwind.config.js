@@ -4,24 +4,24 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode : 'selector',
+  darkMode: 'selector',
   theme: {
     extend: {
       colors: {
-        'main' : {
-          DEFAULT : '#7366FF'
+        'main': {
+          DEFAULT: '#7366FF'
         },
         'secondary': {
-          DEFAULT : '#FD17BC'
+          DEFAULT: '#FD17BC'
         }
       },
 
     },
-    container:{
-      center : true,
+    container: {
+      center: true,
       padding: '1rem'
     },
-  },
-  plugins: [],
-}
 
+    plugins: [],
+  }
+}
