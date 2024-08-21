@@ -7,7 +7,7 @@ function RangeInput({ value, onChange, onBlur, placeholder }) {
         <div className='relative h-10'>
             <input
                 style={{ paddingRight: Math.floor(String(value).length / 3 * 4 + 3) }}
-                className={`border-2 dark:border-gray-500 focus:border-main caret-black placeholder-opacity-100 dark:caret-white rounded-lg text-transparent bg-transparent absolute w-full h-full top-0 bottom-0 right-0 left-0 m-auto z-20 outline-none py-1 px-2`}
+                className={`border-2 transition-colors dark:border-gray-500 focus:border-main caret-black placeholder-opacity-100 dark:caret-white rounded-lg text-transparent bg-transparent absolute w-full h-full top-0 bottom-0 right-0 left-0 m-auto z-20 outline-none py-1 px-2`}
                 onBlur={onBlur}
                 onMouseDown={e => { e.preventDefault(); e.target.focus() }}
                 onKeyDown={(e) => {

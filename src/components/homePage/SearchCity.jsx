@@ -14,7 +14,7 @@ export default function SearchCity() {
     const blurHanndler = () => {
         setTimeout(() => {
             setIsInputFocused(false)
-        }, 100);
+        }, 120);
     }
 
     return (
