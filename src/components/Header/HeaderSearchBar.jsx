@@ -1,7 +1,4 @@
 import { BsSearch } from "react-icons/bs";
-import { CgSearch } from "react-icons/cg";
-
-
 
 export default function HeaderSearchBar() {
     return (
