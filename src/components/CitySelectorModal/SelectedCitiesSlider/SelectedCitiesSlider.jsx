@@ -2,8 +2,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SelectedCityBox from './SelectedCityBox'
 import 'swiper/css';
 import { useLocations } from '../../../hooks/useLocations';
+import { memo } from 'react';
 
-export default function SelectedCitiesSlider() {
+export default memo(function SelectedCitiesSlider() {
 
     const { selectedCities } = useLocations()
 
@@ -32,5 +33,5 @@ export default function SelectedCitiesSlider() {
         </div>
 
     )
-}
+})
 

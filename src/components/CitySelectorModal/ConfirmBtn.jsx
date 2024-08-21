@@ -1,6 +1,7 @@
+import { memo } from "react"
 import { useLocations } from "../../hooks/useLocations"
 
-export default function ConfirmBtn() {
+export default memo(function ConfirmBtn() {
 
     const { confirmSelectedCities, closeCitySelectorModal, isThereAnyValidChange } = useLocations()
 
@@ -18,3 +19,4 @@ export default function ConfirmBtn() {
             تأیید
         </button>)
 }
+)

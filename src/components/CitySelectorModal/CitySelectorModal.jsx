@@ -6,9 +6,12 @@ import CancelBtn from './CancelBtn'
 import ConfirmBtn from './ConfirmBtn'
 import SearchInput from './SearchInput'
 import RemoveAllCitiesBtn from './RemoveAllCitiesBtn'
+import { useState } from 'react'
 
 
 export default function CitySelectorModal() {
+
+    const [searchedValue, setSearchedValue] = useState('')
 
 
     return (
@@ -25,9 +28,9 @@ export default function CitySelectorModal() {
 
                 <SelectedCitiesSlider />
 
-                <SearchInput />
+                <SearchInput searchedValue={searchedValue} setSearchedValue={setSearchedValue} />
 
-                <CitiesList />
+                <CitiesList searchedValue={searchedValue} />
 
 
                 <div className='flex gap-5 justify-between'>

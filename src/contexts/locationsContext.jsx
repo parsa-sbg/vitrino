@@ -11,8 +11,8 @@ export default function LocationsProvider({ children }) {
     const [cities, setCities] = useState([])
     const [provinces, setProvinces] = useState([])
     const [neighborhoods, setNeighborhoods] = useState([])
-    const [selectedCities, setSelectedCities] = useState([{ id: 1, name: "اسکو" }])
-    const [confirmedCities, setConfirmedCities] = useState([{ id: 1, name: "اسکو" }])
+    const [selectedCities, setSelectedCities] = useState([])
+    const [confirmedCities, setConfirmedCities] = useState([])
     const [popularCities, setPopularCities] = useState([])
 
 
