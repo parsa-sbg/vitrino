@@ -28,6 +28,8 @@ export default function LocationsProvider({ children }) {
                 setCities(cities)
                 setProvinces(provinces)
                 setNeighborhoods(neighborhoods)
+            }).catch(err => {
+                console.error('Fetch error:', err);
             })
 
     }, [])
@@ -63,7 +65,7 @@ export default function LocationsProvider({ children }) {
     }, [selectedCities])
 
     const isThereAnyValidChange = () => {
-        if (!selectedCities.length ) return false
+        if (!selectedCities.length) return false
         const result = Boolean(JSON.stringify(confirmedCities) !== JSON.stringify(selectedCities))
         return result
     }
