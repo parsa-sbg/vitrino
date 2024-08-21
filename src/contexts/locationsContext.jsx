@@ -13,6 +13,7 @@ export default function LocationsProvider({ children }) {
     const [neighborhoods, setNeighborhoods] = useState([])
     const [selectedCities, setSelectedCities] = useState([{ id: 1, name: "اسکو" }])
     const [confirmedCities, setConfirmedCities] = useState([{ id: 1, name: "اسکو" }])
+    const [popularCities, setPopularCities] = useState([])
 
 
     useEffect(() => {
@@ -24,15 +25,21 @@ export default function LocationsProvider({ children }) {
                 const cities = response.data.cities
                 const provinces = response.data.provinces
                 const neighborhoods = response.data.neighborhoods
+                const popularCities = response.data.cities.filter(city => city.popular)
 
                 setCities(cities)
                 setProvinces(provinces)
                 setNeighborhoods(neighborhoods)
+                setPopularCities(popularCities)
             }).catch(err => {
                 console.error('Fetch error:', err);
             })
 
     }, [])
+
+    useEffect(() => {
+        setSelectedCities(confirmedCities)
+    },[confirmedCities])
 
 
     const openCitySelectorModal = () => {
@@ -74,6 +81,10 @@ export default function LocationsProvider({ children }) {
         setSelectedCities([])
     }, [])
 
+    const setSingleCityAsConfirmed = useCallback((cityName, cityId) => {
+        setConfirmedCities([{ name: cityName, id: cityId }])
+    }, [])
+
     return (
         <LocationsContext.Provider
             value={{
@@ -81,7 +92,7 @@ export default function LocationsProvider({ children }) {
                 openCitySelectorModal,
                 closeCitySelectorModal,
                 setIsCitySelectorModalOpen,
-                cities, provinces, neighborhoods,
+                cities, provinces, neighborhoods, popularCities,
                 selectedCities,
                 removeSelectedCity,
                 addSelectedCity,
@@ -90,7 +101,8 @@ export default function LocationsProvider({ children }) {
                 confirmSelectedCities,
                 isThisCitySelected,
                 isThereAnyValidChange,
-                removeAllSelectedCities
+                removeAllSelectedCities,
+                setSingleCityAsConfirmed
             }}>
             {children}
         </LocationsContext.Provider>
