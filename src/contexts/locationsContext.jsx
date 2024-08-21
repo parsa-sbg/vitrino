@@ -3,7 +3,7 @@ import propTypes from 'prop-types'
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 
-export const LocationsContxt = createContext()
+export const LocationsContext = createContext()
 
 export default function LocationsProvider({ children }) {
 
@@ -73,7 +73,7 @@ export default function LocationsProvider({ children }) {
     }
 
     return (
-        <LocationsContxt.Provider
+        <LocationsContext.Provider
             value={{
                 isCitySelectorModalOpen,
                 openCitySelectorModal,
@@ -91,7 +91,7 @@ export default function LocationsProvider({ children }) {
                 removeAllSelectedCities
             }}>
             {children}
-        </LocationsContxt.Provider>
+        </LocationsContext.Provider>
     )
 }
 LocationsProvider.propTypes = {

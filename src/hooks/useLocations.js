@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { LocationsContxt } from "../contexts/locationsContext";
+import { LocationsContext } from "../contexts/locationsContext";
 
-const useLocations = () => useContext(LocationsContxt)
+const useLocations = () => useContext(LocationsContext)
 
 export {useLocations}
