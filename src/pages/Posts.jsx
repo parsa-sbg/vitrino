@@ -1,18 +1,18 @@
 import BottomNav from "../components/BottomNav/BottomNav"
 import Header from "../components/Header/Header"
-import PostBox from "../components/PostsPage/PostBox"
 import PostsPageCatSelector from "../components/PostsPage/PostsPageCatSelector"
 import FiltersList from "../components/Filters/FiltersList"
 import { useLocations } from "../hooks/useLocations"
 import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal"
 import { memo } from "react"
+import PostsList from "../components/PostsPage/PostsList"
 
 
 export default memo(function Posts() {
 
     const { isCitySelectorModalOpen } = useLocations()
 
-    
+
 
     return (
         <>
@@ -25,16 +25,7 @@ export default memo(function Posts() {
                     <FiltersList />
                 </div>
 
-                <div className="col-span-12 md:col-span-8 lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                    <div className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3"><PostBox /></div>
-                </div>
+                <PostsList />
 
                 {isCitySelectorModalOpen && <CitySelectorModal />}
 
