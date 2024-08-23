@@ -1,7 +1,6 @@
 import propTypes from 'prop-types'
 import { createContext, useEffect, useState } from "react";
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
-
+import { getAllCats } from '../services/api';
 
 export const CategoryContext = createContext()
 
@@ -11,16 +10,9 @@ export default function CategoryProvider({ children }) {
     const [selectedCatId, setSelectedCatId] = useState(null)
 
     useEffect(() => {
-
-        fetch(`${baseUrl}/v1/category`)
-            .then(res => res.json())
-            .then(response => {
-
-                const allCats = response.data.categories
+        getAllCats()
+            .then(allCats => {
                 setAllCats(allCats)
-
-            }).catch(err => {
-                console.error('Fetch error:', err);
             })
     }, [])
 

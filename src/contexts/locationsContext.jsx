@@ -1,6 +1,6 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import propTypes from 'prop-types'
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+import { getAllLocations } from "../services/api";
 
 
 export const LocationsContext = createContext()
@@ -17,29 +17,20 @@ export default function LocationsProvider({ children }) {
 
 
     useEffect(() => {
-
-        fetch(`${baseUrl}/v1/location/`)
-            .then(res => res.json())
-            .then(response => {
-
-                const cities = response.data.cities
-                const provinces = response.data.provinces
-                const neighborhoods = response.data.neighborhoods
-                const popularCities = response.data.cities.filter(city => city.popular)
-
+        getAllLocations()
+            .then(allLocations => {
+                const { cities, provinces, neighborhoods, popularCities } = allLocations
                 setCities(cities)
                 setProvinces(provinces)
                 setNeighborhoods(neighborhoods)
                 setPopularCities(popularCities)
-            }).catch(err => {
-                console.error('Fetch error:', err);
             })
 
     }, [])
 
     useEffect(() => {
         setSelectedCities(confirmedCities)
-    },[confirmedCities])
+    }, [confirmedCities])
 
 
     const openCitySelectorModal = () => {
