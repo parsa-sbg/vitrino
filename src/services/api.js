@@ -14,7 +14,7 @@ const getAllLocations = async () => {
     const provinces = response?.data?.provinces || []
     const neighborhoods = response?.data?.neighborhoods || []
     const popularCities = response?.data?.cities?.filter(city => city.popular) || []
-    
+
     return { cities, provinces, neighborhoods, popularCities }
 }
 
@@ -25,7 +25,16 @@ const getAllCats = async () => {
 }
 
 
+const getPosts = async (citiesId) => {    
+    const citiesIdString = citiesId ? citiesId.map(city => city.id).join('|') : null
+
+    const res = await doFetch(`/v1/post/${citiesIdString && `?city=${citiesIdString}`}`)
+    return res.data.posts || []
+}
+
+
 export {
     getAllCats,
-    getAllLocations
+    getAllLocations,
+    getPosts
 }
