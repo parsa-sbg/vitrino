@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom"
 
 export default memo(function Posts() {
 
-    const { isCitySelectorModalOpen, confirmedCities } = useLocations()
+    const {  confirmedCities } = useLocations()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -34,7 +34,7 @@ export default memo(function Posts() {
 
                 <PostsList />
 
-                {isCitySelectorModalOpen && <CitySelectorModal />}
+                <CitySelectorModal />
 
             </div>
 

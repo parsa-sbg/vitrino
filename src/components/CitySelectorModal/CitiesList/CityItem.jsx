@@ -1,10 +1,9 @@
 import propTypes from 'prop-types'
 import { FaCheck } from "react-icons/fa";
 import { useLocations } from '../../../hooks/useLocations';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
-
-export default function CityItem({ cityName, cityId}) {
+const CityItem = memo(({ cityName, cityId }) => {
 
     const [ischecked, setIschecked] = useState(false)
     const { removeSelectedCity, addSelectedCity, isThisCitySelected } = useLocations()
@@ -45,10 +44,14 @@ export default function CityItem({ cityName, cityId}) {
             </div>
         </div>
     )
-}
+})
+
+CityItem.displayName = 'CityItem'
 
 CityItem.propTypes = {
     cityName: propTypes.string,
     cityId: propTypes.number,
     isActive: propTypes.bool
 }
+
+export default CityItem
