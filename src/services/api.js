@@ -26,12 +26,10 @@ const getAllCats = async () => {
 
 
 const getPosts = async (citiesId, selectedCatId) => {    
-    console.log(selectedCatId);
     
     const citiesIdString = citiesId ? citiesId.map(city => city.id).join('|') : null
 
     const url = `/v1/post/${ `?categoryId=${selectedCatId ? selectedCatId : ''}`}&${citiesIdString && `city=${citiesIdString}`}`
-    console.log(url);
     
 
     const res = await doFetch(url)

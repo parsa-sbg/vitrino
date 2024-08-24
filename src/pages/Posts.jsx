@@ -4,15 +4,22 @@ import PostsPageCatSelector from "../components/PostsPage/PostsPageCatSelector"
 import FiltersList from "../components/Filters/FiltersList"
 import { useLocations } from "../hooks/useLocations"
 import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal"
-import { memo } from "react"
+import { memo, useEffect } from "react"
 import PostsList from "../components/PostsPage/PostsList"
+import { useNavigate } from "react-router-dom"
 
 
 export default memo(function Posts() {
 
-    const { isCitySelectorModalOpen } = useLocations()
+    const { isCitySelectorModalOpen, confirmedCities } = useLocations()
+    const navigate = useNavigate()
 
-
+    useEffect(() => {
+        if (!confirmedCities.length) {
+            navigate("/")
+        }
+        
+    }, [confirmedCities, navigate])
 
     return (
         <>

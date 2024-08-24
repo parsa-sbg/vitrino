@@ -7,12 +7,14 @@ export const LocationsContext = createContext()
 
 export default function LocationsProvider({ children }) {
 
+    const storedConfirmedCities = localStorage.getItem('confirmedCities') ? JSON.parse(localStorage.getItem('confirmedCities')) : []
+
     const [isCitySelectorModalOpen, setIsCitySelectorModalOpen] = useState(false)
     const [cities, setCities] = useState([])
     const [provinces, setProvinces] = useState([])
     const [neighborhoods, setNeighborhoods] = useState([])
     const [selectedCities, setSelectedCities] = useState([])
-    const [confirmedCities, setConfirmedCities] = useState([])
+    const [confirmedCities, setConfirmedCities] = useState( storedConfirmedCities ) 
     const [popularCities, setPopularCities] = useState([])
 
 
@@ -25,11 +27,12 @@ export default function LocationsProvider({ children }) {
                 setNeighborhoods(neighborhoods)
                 setPopularCities(popularCities)
             })
-
+            localStorage.getItem('confirmedCities') && setConfirmedCities(JSON.parse(localStorage.getItem('confirmedCities')))
     }, [])
 
     useEffect(() => {
         setSelectedCities(confirmedCities)
+        localStorage.setItem('confirmedCities', JSON.stringify(confirmedCities))
     }, [confirmedCities])
 
 
