@@ -19,8 +19,8 @@ export default function PostBox({title, price, imagePath, cityName}) {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-lg min-w-[133.15px]">
-            <img className="h-full object-cover" src={baseUrl + '/' + imagePath} alt="" />
+          <div className="overflow-hidden rounded-lg min-w-[133.15px] w-[133.15px]">
+            <img className="h-full w-full object-cover" src={baseUrl + '/' + imagePath} alt="" />
           </div>
 
         </div>

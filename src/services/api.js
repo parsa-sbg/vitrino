@@ -25,10 +25,16 @@ const getAllCats = async () => {
 }
 
 
-const getPosts = async (citiesId) => {    
+const getPosts = async (citiesId, selectedCatId) => {    
+    console.log(selectedCatId);
+    
     const citiesIdString = citiesId ? citiesId.map(city => city.id).join('|') : null
 
-    const res = await doFetch(`/v1/post/${citiesIdString && `?city=${citiesIdString}`}`)
+    const url = `/v1/post/${ `?categoryId=${selectedCatId ? selectedCatId : ''}`}&${citiesIdString && `city=${citiesIdString}`}`
+    console.log(url);
+    
+
+    const res = await doFetch(url)
     return res.data.posts || []
 }
 
