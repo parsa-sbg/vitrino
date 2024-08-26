@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom"
 import BottomNav from "../components/BottomNav/BottomNav"
 import Header from "../components/Header/Header"
+import MobileMyVitrinHeader from "../components/MyVitrin/MobileMyVitrinHeader"
+import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal"
 
 
 export default function MyVitrin() {
@@ -8,15 +10,11 @@ export default function MyVitrin() {
 
         <>
             <div className="hidden md:block">
-                <Header noInput/>
+                <Header noInput />
             </div>
 
             <div className="md:hidden">
-                <div className=" md:border-b-2 fixed top-0 z-50 right-0 left-0 bg-white dark:bg-[#333]">
-                    <span className="container flex py-3 gap-4 justify-between items-center">
-                        ویترین من
-                    </span>
-                </div>
+                <MobileMyVitrinHeader />
             </div>
 
 
@@ -35,6 +33,7 @@ export default function MyVitrin() {
 
             </div>
 
+            <CitySelectorModal />
             <BottomNav />
         </>
     )

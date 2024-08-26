@@ -1,9 +1,12 @@
 import { createContext, useCallback, useEffect, useState } from "react";
 import propTypes from 'prop-types'
 import { getAllLocations } from "../services/api";
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 
 export const LocationsContext = createContext()
+
 
 export default function LocationsProvider({ children }) {
 
@@ -17,6 +20,11 @@ export default function LocationsProvider({ children }) {
     const [confirmedCities, setConfirmedCities] = useState(storedConfirmedCities)
     const [popularCities, setPopularCities] = useState([])
 
+
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    
 
     useEffect(() => {
         getAllLocations()
@@ -33,6 +41,7 @@ export default function LocationsProvider({ children }) {
     useEffect(() => {
         setSelectedCities(confirmedCities)
         localStorage.setItem('confirmedCities', JSON.stringify(confirmedCities))
+        location.pathname !== '/posts' && navigate ('/posts')
     }, [confirmedCities])
 
 
