@@ -15,7 +15,7 @@ export default function MyVitrin() {
             </div>
 
             <div className="md:hidden">
-                <MobileMyVitrinHeader />
+                <MobileMyVitrinHeader title={'ویترین من'} />
             </div>
 
 
