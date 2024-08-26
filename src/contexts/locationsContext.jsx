@@ -24,7 +24,7 @@ export default function LocationsProvider({ children }) {
     const location = useLocation()
     const navigate = useNavigate()
 
-    
+
 
     useEffect(() => {
         getAllLocations()
@@ -41,7 +41,6 @@ export default function LocationsProvider({ children }) {
     useEffect(() => {
         setSelectedCities(confirmedCities)
         localStorage.setItem('confirmedCities', JSON.stringify(confirmedCities))
-        location.pathname !== '/posts' && navigate ('/posts')
     }, [confirmedCities])
 
 
@@ -67,7 +66,8 @@ export default function LocationsProvider({ children }) {
 
     const confirmSelectedCities = useCallback(() => {
         setConfirmedCities(selectedCities)
-    }, [selectedCities])
+        location.pathname !== '/posts' && navigate('/posts')
+    }, [selectedCities, location.pathname, navigate])
 
     const isThisCitySelected = useCallback((cityId) => {
         const result = selectedCities.some(city => city.id == cityId)
