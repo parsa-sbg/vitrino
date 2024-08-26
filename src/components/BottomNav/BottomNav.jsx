@@ -26,7 +26,7 @@ export default memo(function BottomNav() {
                     ثبت آگهی
                 </Link>
 
-                <Link className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
+                <Link to={'/myvitrin'} className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
                     <FaUser />
                     ویترین من
                 </Link>

@@ -2,10 +2,10 @@ import { useRoutes } from "react-router-dom"
 import Home from "./pages/Home"
 import Posts from "./pages/Posts"
 import MyVitrin from "./pages/MyVitrin"
-import UserPosts from "./components/MyVitrin/posts/UserPosts/UserPosts"
-import UserBookmarks from "./components/MyVitrin/posts/UserBookmarks/UserBookmarks"
-import UserNotes from "./components/MyVitrin/posts/UserNotes/UserNotes"
-import UserRecentSeens from "./components/MyVitrin/posts/UserRecentSeens/UserRecentSeens"
+import UserPosts from "./components/MyVitrin/UserPosts/UserPosts"
+import UserBookmarks from "./components/MyVitrin/UserBookmarks/UserBookmarks"
+import UserNotes from "./components/MyVitrin/UserNotes/UserNotes"
+import UserRecentSeens from "./components/MyVitrin/UserRecentSeens/UserRecentSeens"
 
 export default function Routes() {
     const routes = useRoutes([
