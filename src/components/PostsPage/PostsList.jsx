@@ -36,7 +36,7 @@ export default memo(function PostsList() {
 
   return (
 
-    <div className="col-span-12 md:col-span-8 lg:col-span-9 grid xl:col-span-9 h-fit grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
+    <div className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-fit custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
 
       {isLoading && generateSkeletonLoader()}
 
