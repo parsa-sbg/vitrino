@@ -7,6 +7,7 @@ import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal
 import { memo, useEffect } from "react"
 import PostsList from "../components/PostsPage/PostsList"
 import { useNavigate } from "react-router-dom"
+import LoginModal from "../components/LoginModal/LoginModal"
 
 
 export default memo(function Posts() {
@@ -35,6 +36,7 @@ export default memo(function Posts() {
                 <PostsList />
 
                 <CitySelectorModal />
+                <LoginModal />
 
             </div>
 

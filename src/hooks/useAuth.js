@@ -1,16 +1,5 @@
-import { useState } from "react"
-import { sendOtpCode } from "../services/api"
+import { useContext } from "react"
+import { AuthContext } from "../contexts/authContext"
 
 
-export const useAuth = () => {
-    const storedToken = JSON.parse(localStorage.getItem('userToken'))
-
-    const [userToken, setUserToken] = useState(storedToken ? storedToken : null)
-    const isUserLogin = userToken ? true : false
-
-    const sendOtp = (phone) => {
-        sendOtpCode(phone)
-    }
-
-    return {userToken, sendOtp, isUserLogin}
-}
+export const useAuth = () => useContext(AuthContext)
