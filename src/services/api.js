@@ -25,20 +25,33 @@ const getAllCats = async () => {
 }
 
 
-const getPosts = async (citiesId, selectedCatId) => {    
-    
+const getPosts = async (citiesId, selectedCatId) => {
+
     const citiesIdString = citiesId ? citiesId.map(city => city.id).join('|') : null
 
-    const url = `/v1/post/${ `?categoryId=${selectedCatId ? selectedCatId : ''}`}&${citiesIdString && `city=${citiesIdString}`}`
-    
+    const url = `/v1/post/${`?categoryId=${selectedCatId ? selectedCatId : ''}`}&${citiesIdString && `city=${citiesIdString}`}`
+
 
     const res = await doFetch(url)
     return res.data.posts || []
 }
 
 
+const sendOtpCode = async (phone) => {
+    const response = await doFetch('/v1/auth/send', {
+        method: "post",
+        body: JSON.stringify({
+            phone
+        })
+    })
+
+    console.log(response);
+}
+
+
 export {
     getAllCats,
     getAllLocations,
-    getPosts
+    getPosts,
+    sendOtpCode,
 }
