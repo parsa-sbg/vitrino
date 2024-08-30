@@ -6,13 +6,14 @@ import { GrNotes } from "react-icons/gr";
 import { RxCountdownTimer } from "react-icons/rx";
 
 import { MdLogout } from "react-icons/md";
-
-
-
+import { useAuth } from "../../hooks/useAuth";
 
 
 
 export default function MyVitrinMenu() {
+
+    const {userName} = useAuth()
+
     return (
         <div className="h-full font-semibold text-md">
 
@@ -21,7 +22,7 @@ export default function MyVitrinMenu() {
                     <FaUserAlt />
                     <span className="pb-1">کاربر ویترینو</span>
                 </span>
-                <span className="text-sm text-gray-500 dark:text-gray-200 font-light">تلفن 09021230222</span>
+                <span className="text-sm text-gray-500 dark:text-gray-200 font-light">تلفن {userName}</span>
             </div>
 
             <MyVitrinMenuItem href={'/myvitrin/posts'} name={'آگهی‌های من'} Icon={RiFilePaper2Line} />
