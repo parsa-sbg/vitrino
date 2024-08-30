@@ -3,7 +3,6 @@ const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 const doFetch = async (path, options = {}) => {
     const res = await fetch(baseUrl + path, options);
-    if (!res.ok) throw new Error('Network response was not ok');
     const response = await res.json();
     return response;
 };
@@ -38,14 +37,28 @@ const getPosts = async (citiesId, selectedCatId) => {
 
 
 const sendOtpCode = async (phone) => {
-    const response = await doFetch('/v1/auth/send', {
+
+    return await doFetch('/v1/auth/send', {
         method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "phone": 0 + phone })
+    })
+}
+
+const verifyOtpCode = async (phone, otp) => {
+
+    return await doFetch('/v1/auth/verify', {
+        method: "post",
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({
-            phone
+            "phone": 0 + phone,
+            "otp": otp
         })
     })
-
-    console.log(response);
 }
 
 
@@ -54,4 +67,5 @@ export {
     getAllLocations,
     getPosts,
     sendOtpCode,
+    verifyOtpCode
 }

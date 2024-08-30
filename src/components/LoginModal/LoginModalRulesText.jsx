@@ -1,6 +1,12 @@
+import propTypes from 'prop-types' 
 
-export default function LoginModalRulesText() {
+
+export default function LoginModalRulesText({isOtpSent}) {
     return (
-        <p className="mt-2">شرایط استفاده از خدمات و حریم خصوصی ویترینو را می‌پذیرم.</p>
+        <p className={`${isOtpSent && 'hidden'} mt-2`}>شرایط استفاده از خدمات و حریم خصوصی ویترینو را می‌پذیرم.</p>
     )
+}
+
+LoginModalRulesText.propTypes = {
+    isOtpSent: propTypes.bool
 }
