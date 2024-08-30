@@ -14,9 +14,9 @@ export default function AuthContextProvider({ children }) {
     const [isLoginModalShow, setIsLoginModalShow] = useState(false)
     const isUserLogin = userToken ? true : false
 
-    // useEffect(() => {
-    //     localStorage.setItem('userToken', JSON.stringify(userToken))
-    // }, [userToken])
+    useEffect(() => {
+        localStorage.setItem('userToken', JSON.stringify(userToken))
+    }, [userToken])
 
     const showLoginModal = () => {
         setIsLoginModalShow(true)
