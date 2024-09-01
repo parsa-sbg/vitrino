@@ -4,7 +4,7 @@ import propTypes, { string } from 'prop-types'
 
 export default function LoginModalConfiermBtn({ setIsLoginWasSuccess, isOtpSent, setIsOtpSent, number, setIsNumberInvalid, inputOtp, setIsOtpInvalid }) {
 
-    const { sendOtp, verifyOtp, setUserToken, setUserName } = useAuth()
+    const { sendOtp, verifyOtp, setUserToken } = useAuth()
 
 
     const btnClickHandler = async () => {
@@ -21,7 +21,6 @@ export default function LoginModalConfiermBtn({ setIsLoginWasSuccess, isOtpSent,
 
         if (data) {
             setUserToken(data.token)
-            setUserName(data.user.username)
             setIsLoginWasSuccess(true)
         } else {
             setIsOtpInvalid(true)

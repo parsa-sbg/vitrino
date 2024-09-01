@@ -61,11 +61,22 @@ const verifyOtpCode = async (phone, otp) => {
     })
 }
 
+const getMe = async (token) => {
+    const response = await doFetch('/v1/auth/me',{
+        headers: {
+            'Authorization' : 'Bearer ' + token
+        }
+    }) 
+
+    return response.data.user
+}
+
 
 export {
     getAllCats,
     getAllLocations,
     getPosts,
     sendOtpCode,
-    verifyOtpCode
+    verifyOtpCode,
+    getMe
 }

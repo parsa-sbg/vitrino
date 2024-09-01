@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import propTypes from 'prop-types'
-import { sendOtpCode, verifyOtpCode } from "../services/api";
+import { getMe, sendOtpCode, verifyOtpCode } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext()
@@ -20,6 +20,9 @@ export default function AuthContextProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem('userToken', JSON.stringify(userToken))
+        getMe(userToken).then(res => {
+            setUserName(res.username)
+        })
     }, [userToken])
 
     const showLoginModal = () => {
@@ -58,7 +61,6 @@ export default function AuthContextProvider({ children }) {
             verifyOtp,
             setUserToken,
             userName,
-            setUserName,
             logOut
         }}>
             {children}
