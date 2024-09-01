@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import propTypes from 'prop-types'
 import { sendOtpCode, verifyOtpCode } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext()
 
@@ -13,6 +14,9 @@ export default function AuthContextProvider({ children }) {
 
     const [isLoginModalShow, setIsLoginModalShow] = useState(false)
     const isUserLogin = userToken ? true : false
+
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         localStorage.setItem('userToken', JSON.stringify(userToken))
@@ -37,6 +41,11 @@ export default function AuthContextProvider({ children }) {
     }
 
 
+    const logOut = () => {
+        setUserToken(null)
+        setUserName(null)
+        navigate('/posts')
+    }
 
     return (
         <AuthContext.Provider value={{
@@ -49,7 +58,8 @@ export default function AuthContextProvider({ children }) {
             verifyOtp,
             setUserToken,
             userName,
-            setUserName
+            setUserName,
+            logOut
         }}>
             {children}
         </AuthContext.Provider >

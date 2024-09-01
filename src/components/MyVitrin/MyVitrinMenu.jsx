@@ -7,12 +7,13 @@ import { RxCountdownTimer } from "react-icons/rx";
 
 import { MdLogout } from "react-icons/md";
 import { useAuth } from "../../hooks/useAuth";
+import LogOutBtn from "./LogOutBtn";
 
 
 
 export default function MyVitrinMenu() {
 
-    const {userName} = useAuth()
+    const { userName } = useAuth()
 
     return (
         <div className="h-full font-semibold text-md">
@@ -30,12 +31,7 @@ export default function MyVitrinMenu() {
             <MyVitrinMenuItem href={'/myvitrin/notes'} name={'یادداشت‌ها'} Icon={GrNotes} />
             <MyVitrinMenuItem href={'/myvitrin/recent-seens'} name={'بازدیدهای اخیر'} Icon={RxCountdownTimer} />
 
-            <div className="border-t mt-5 pt-3 dark:border-gray-500">
-                <button className="flex items-center gap-2 w-full text-right">
-                    <MdLogout />
-                    <span className="pb-1">خروج</span>
-                </button>
-            </div>
+            <LogOutBtn />
         </div>
     )
 }
