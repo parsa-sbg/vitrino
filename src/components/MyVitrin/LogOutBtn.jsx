@@ -4,10 +4,10 @@ import LogOutModal from './LogOutModal'
 
 export default function LogOutBtn() {
 
-    const {isLogOutModalShow, showLoginModa, hideLoginModa, logOut} = useLogOut()
+    const {isLogOutModalShow, showLoginModal, hideLoginModal, logOut} = useLogOut()
 
     const logOutBtnClickHandler = () => {
-        showLoginModa()
+        showLoginModal()
     }
 
     return (
@@ -16,7 +16,7 @@ export default function LogOutBtn() {
                 <MdLogout />
                 <span className="pb-1">خروج</span>
             </button>
-            <LogOutModal logOut={logOut} hideLoginModa={hideLoginModa} isLogOutModalShow={isLogOutModalShow} />
+            <LogOutModal logOut={logOut} hideLoginModal={hideLoginModal} isLogOutModalShow={isLogOutModalShow} />
         </div>
     )
 }

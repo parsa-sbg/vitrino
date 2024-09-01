@@ -6,18 +6,18 @@ export const useLogOut = () => {
     const [isLogOutModalShow, setIsLogOutModalShow] = useState(false)
     const {logOut} = useAuth()
 
-    const showLoginModa = () => {
+    const showLoginModal = () => {
         setIsLogOutModalShow(true)
     }
 
-    const hideLoginModa = () => {
+    const hideLoginModal = () => {
         setIsLogOutModalShow(false)
     }
 
     return {
         isLogOutModalShow,
-        showLoginModa,
-        hideLoginModa,
+        showLoginModal,
+        hideLoginModal,
         logOut
     }
 }

@@ -1,13 +1,13 @@
 import propTypes from 'prop-types'
 import SelectedCitiesSlider from './SelectedCitiesSlider/SelectedCitiesSlider'
 import CitiesList from './CitiesList/CitiesList'
-import Cover from './Cover'
 import CancelBtn from './CancelBtn'
 import ConfirmBtn from './ConfirmBtn'
 import SearchInput from './SearchInput'
 import RemoveAllCitiesBtn from './RemoveAllCitiesBtn'
 import { memo, useState } from 'react'
 import { useLocations } from '../../hooks/useLocations'
+import Cover from '../Cover'
 
 
 const CitySelectorModal = memo(() => {
@@ -15,6 +15,8 @@ const CitySelectorModal = memo(() => {
 
 
     const [searchedValue, setSearchedValue] = useState('')
+    const { closeCitySelectorModal, cancelSelectedCities } = useLocations()
+
 
 
     return (
@@ -42,8 +44,10 @@ const CitySelectorModal = memo(() => {
                 </div>
             </div>
 
-
-            <Cover />
+            <Cover onClickCallBack={() => {
+                closeCitySelectorModal()
+                cancelSelectedCities()
+            }} />
 
         </div>
     )

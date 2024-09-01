@@ -1,5 +1,4 @@
 import { useAuth } from "../../hooks/useAuth";
-import LoginModalCover from "./LoginModalCover"
 import LoginModalInput from "./LoginModalInput";
 import LoginModalRulesText from "./LoginModalRulesText";
 import { useState } from "react";
@@ -8,6 +7,7 @@ import LoginModalStepTitle from "./LoginModalStepTitle";
 import LoginModalStepDesc from "./LoginModalStepDesc";
 import LoginModalHeader from "./LoginModalHeader/LoginModalHeader";
 import SuccessLoginAlert from "./SuccessLoginAlert";
+import Cover from "../Cover";
 
 
 export default function LoginModal() {
@@ -54,8 +54,7 @@ export default function LoginModal() {
             }
 
 
-
-            <LoginModalCover closeAndResetModal={closeAndResetModal} />
+            <Cover onClickCallBack={closeAndResetModal} />
 
         </div>
     )
