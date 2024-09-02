@@ -1,6 +1,7 @@
 import { memo } from "react";
 import PostBox from "./PostBox";
 import usePosts from '../../hooks/usePosts'
+import NotFoundVector from "./NotFoundVector";
 
 
 export default memo(function PostsList() {
@@ -10,7 +11,7 @@ export default memo(function PostsList() {
   const generateSkeletonLoader = () => {
     const SkeleteLoaderCount = Array.from({ length: 10 })
 
-    return SkeleteLoaderCount.map(( _, index) => (
+    return SkeleteLoaderCount.map((_, index) => (
       <div key={index} className="h-40 animate-pulse col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3">
         <div className="block w-full h-full p-3 border-b sm:rounded-lg md:rounded-none lg:rounded-lg sm:border md:border-x-0 md:border-t-0 lg:border dark:border-gray-500 md:border-b">
           <div className="h-full flex justify-between gap-5">
@@ -33,6 +34,17 @@ export default memo(function PostsList() {
     ))
   }
 
+  if (!posts.length) return (
+    <div className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-full custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
+      <div className="flex flex-col items-center justify-center w-full h-full col-span-12">
+        <NotFoundVector />
+        <div className="h-full text-center felx flex-col gap-2">
+          <span className="block">نتیجه‌ای برای جستجوی شما پیدا نشد.</span>
+          <span className="block">پیشنهاد می‌کنیم که دسته، شهر و فیلترهای انتخابی خود را بازبینی کنید.</span>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
 
