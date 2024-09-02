@@ -4,9 +4,9 @@ import { memo } from "react";
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 
-const PostBox = memo(({ title, price, imagePath, cityName }) => {
+const PostBox = memo(({ title, price, imagePath, cityName, postId }) => {  
   return (
-    <Link className="block w-full h-full p-3 border-b sm:rounded-lg md:rounded-none lg:rounded-lg sm:border md:border-x-0 md:border-t-0 lg:border dark:border-gray-500 md:border-b">
+    <Link to={`/post/?${postId}`} className="block w-full h-full p-3 border-b sm:rounded-lg md:rounded-none lg:rounded-lg sm:border md:border-x-0 md:border-t-0 lg:border dark:border-gray-500 md:border-b">
 
       <div className="h-full flex justify-between gap-5">
 
@@ -36,7 +36,8 @@ PostBox.propTypes = {
   title: propTypes.string,
   price: propTypes.number,
   imagePath: propTypes.string,
-  cityName: propTypes.string
+  cityName: propTypes.string,
+  postId: propTypes.string
 }
 
 export default PostBox

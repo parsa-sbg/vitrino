@@ -56,7 +56,7 @@ export default memo(function PostsList() {
         <div
           key={post._id}
           className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3">
-          <PostBox title={post.title} price={post.price} imagePath={post?.pics[0]?.path} cityName={post.city.name} />
+          <PostBox postId={post._id} title={post.title} price={post.price} imagePath={post?.pics[0]?.path} cityName={post.city.name} />
         </div>
       ))}
     </div>)

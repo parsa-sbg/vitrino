@@ -6,6 +6,7 @@ import UserPosts from "./components/MyVitrin/UserPosts/UserPosts"
 import UserBookmarks from "./components/MyVitrin/UserBookmarks/UserBookmarks"
 import UserNotes from "./components/MyVitrin/UserNotes/UserNotes"
 import UserRecentSeens from "./components/MyVitrin/UserRecentSeens/UserRecentSeens"
+import Post from "./pages/Post"
 
 export default function Routes() {
     const routes = useRoutes([
@@ -16,6 +17,10 @@ export default function Routes() {
         {
             path: '/posts',
             element: <Posts />
+        },
+        {
+            path: '/post',
+            element: <Post />
         },
         {
             path: '/myvitrin',

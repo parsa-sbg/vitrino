@@ -20,7 +20,7 @@ const CitySelectorModal = memo(() => {
 
 
     return (
-        <div className={`${isCitySelectorModalOpen && '!opacity-100 !visible'} invisible opacity-0 transition-all duration-200 fixed top-0 bottom-0 right-0 left-0 w-screen h-screen z-50 flex items-center justify-center`}>
+        <div className={`${isCitySelectorModalOpen && '!opacity-100 !visible'} invisible opacity-0 transition-all duration-200 fixed top-0 bottom-0 right-0 left-0 w-screen h-screen z-[500] flex items-center justify-center`}>
 
 
             <div className="flex flex-col gap-4 z-50 bg-white dark:bg-[#242424] w-full h-full md:max-w-[490px] md:max-h-[590px] md:rounded-lg p-7">
