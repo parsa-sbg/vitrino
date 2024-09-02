@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import MobileHeader from "../components/PostPageComponents/MobileHeader";
 import { getSinglePostDetails } from "../services/api";
 import PostTitle from "../components/PostPageComponents/PostTitle";
+import PostTime from "../components/PostPageComponents/PostTime";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -28,6 +29,7 @@ export default function Post() {
 
                 <div className="col-span-2 md:col-span-1 bg-red-500 h-screen">
                     <PostTitle title={postData?.title} />
+                    <PostTime cityName={postData?.city.name} date={postData?.createdAt} />
                 </div>
 
                 <div className="col-span-2 md:col-span-1 bg-red-500 h-screen">
