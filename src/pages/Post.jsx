@@ -1,13 +1,22 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import Header from "../components/Header/Header";
 import MobileHeader from "../components/PostPageComponents/MobileHeader";
+import { getSinglePostDetails } from "../services/api";
 
 export default function Post() {
+    const [postData, setPostdata] = useState()
     const location = useLocation()
 
     useEffect(() => {
-        console.log(location);
+        const postId = location.search.replace("?", "")
+        getSinglePostDetails(postId)
+            .then(data => {
+                setPostdata(data)
+                console.log(data);
+            })
+
+
     }, [location])
 
     return (
@@ -23,6 +32,6 @@ export default function Post() {
 
         </div>
 
-        
+
     )
 }

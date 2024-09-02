@@ -72,11 +72,18 @@ const getMe = async (token) => {
 }
 
 
+const getSinglePostDetails = async (postId) => {
+    const response = await doFetch(`/v1/post/${postId}`)
+    return response.data.post 
+    
+}
+
 export {
     getAllCats,
     getAllLocations,
     getPosts,
     sendOtpCode,
     verifyOtpCode,
-    getMe
+    getMe,
+    getSinglePostDetails
 }
