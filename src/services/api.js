@@ -74,7 +74,7 @@ const getMe = async (token) => {
 
 const getSinglePostDetails = async (postId) => {
     const response = await doFetch(`/v1/post/${postId}`)
-    return response.data.post 
+    return response.data.post || {}
     
 }
 
