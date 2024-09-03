@@ -25,7 +25,7 @@ export default function Post() {
     }, [location])
 
     return (
-        <div className="min-h-screen container pt-[66.84px] md:pt-[90px] pb-10">
+        <div className="h-screen overflow-y-scroll custom-scrollbar container pt-[66.84px] md:pt-[90px] pb-10">
 
             <div className="hidden md:block"><Header /></div>
             <div className="md:hidden"><MobileHeader /></div>
