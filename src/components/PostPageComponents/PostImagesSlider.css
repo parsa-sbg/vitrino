@@ -1,0 +1,10 @@
+.swiper {
+    user-select: none;
+    @apply !relative
+}
+
+.swiper-pagination {}
+
+.swiper-pagination-bullet-active {
+    @apply bg-main
+}

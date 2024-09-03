@@ -8,6 +8,7 @@ import PostTime from "../components/PostPageComponents/PostTime";
 import PostContact from "../components/PostPageComponents/PostContact";
 import Postdetails from "../components/PostPageComponents/Postdetails";
 import PostDesc from "../components/PostPageComponents/PostDesc";
+import PostImagesSlider from "../components/PostPageComponents/PostImagesSlider";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -38,8 +39,8 @@ export default function Post() {
                     <PostDesc desc={postData?.description} />
                 </div>
 
-                <div className="col-span-2 md:col-span-1 bg-red-500 h-screen">
-
+                <div className="col-span-2 md:col-span-1">
+                    {postData?.pics && <PostImagesSlider images={postData?.pics} />}
                 </div>
 
             </div>
