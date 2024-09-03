@@ -9,6 +9,7 @@ import PostContact from "../components/PostPageComponents/PostContact";
 import Postdetails from "../components/PostPageComponents/Postdetails";
 import PostDesc from "../components/PostPageComponents/PostDesc";
 import PostImagesSlider from "../components/PostPageComponents/PostImagesSlider";
+import PostNote from "../components/PostPageComponents/PostNote";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -31,7 +32,7 @@ export default function Post() {
 
             <div className="sm:px-10 md:px-0 lg:px-20 xl:px-32 grid grid-cols-2 gap-4 md:gap-7 lg:gap-10 xl:gap-16">
 
-                <div className="col-span-2 md:col-span-1">
+                <div className="order-4 md:order-1 col-span-2 md:col-span-1">
                     <PostTitle title={postData?.title} />
                     <PostTime cityName={postData?.city.name} date={postData?.createdAt} />
                     <PostContact phone={postData?.creator?.phone} />
@@ -39,8 +40,9 @@ export default function Post() {
                     <PostDesc desc={postData?.description} />
                 </div>
 
-                <div className="col-span-2 md:col-span-1">
-                    {postData?.pics && <PostImagesSlider images={postData?.pics} />}
+                <div className="md:order-2 col-span-2 md:col-span-1">
+                    <PostImagesSlider images={postData?.pics} />
+                    <PostNote />
                 </div>
 
             </div>

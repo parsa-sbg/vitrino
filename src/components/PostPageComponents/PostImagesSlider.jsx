@@ -20,7 +20,6 @@ import './PostImagesSlider.css'
 
 
 const PostImagesSlider = memo(({ images }) => {
-    console.log(images);
 
 
     const sliderRef = useRef(null);
@@ -44,11 +43,11 @@ const PostImagesSlider = memo(({ images }) => {
             slidesPerView={1}
             pagination={{ clickable: true }}
         >
-            {images.length
+            {images?.length
                 ? images.map(image => (
                     <SwiperSlide key={image._id}>
-                        <div className=" h-96 rounded-lg overflow-hidden">
-                            <img className="w-full h-full object-cover" src={baseUrl + '/' + image.path} alt="" />
+                        <div className=" h-72 rounded-lg overflow-hidden">
+                            <img className="w-full h-full object-cover object-center" src={baseUrl + '/' + image.path} alt="" />
                         </div>
                     </SwiperSlide>
                 ))
