@@ -6,6 +6,7 @@ import { getSinglePostDetails } from "../services/api";
 import PostTitle from "../components/PostPageComponents/PostTitle";
 import PostTime from "../components/PostPageComponents/PostTime";
 import PostContact from "../components/PostPageComponents/PostContact";
+import Postdetails from "../components/PostPageComponents/Postdetails";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -32,6 +33,7 @@ export default function Post() {
                     <PostTitle title={postData?.title} />
                     <PostTime cityName={postData?.city.name} date={postData?.createdAt} />
                     <PostContact phone={postData?.creator?.phone} />
+                    <Postdetails price={postData?.price} dynamicFields={postData?.dynamicFields} />
                 </div>
 
                 <div className="col-span-2 md:col-span-1 bg-red-500 h-screen">

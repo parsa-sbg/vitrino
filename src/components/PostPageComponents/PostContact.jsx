@@ -8,7 +8,7 @@ const PostContact = memo(({phone}) => {
     const [isNubmerShow, setIsNubmerShow] = useState(false)
 
     return (
-        <div className="py-4 my-4 border-y dark:border-gray-500">
+        <div className="py-4 my-4 border-t dark:border-gray-500">
             <div className="flex justify-between items-center">
                 <button
                     onClick={() => {setIsNubmerShow(true)}}
