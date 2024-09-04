@@ -92,8 +92,8 @@ const getSinglePostDetails = async (postId, token) => {
 
 }
 
-const addNote = async (token, postId, content) => {    
-    const response = await doFetch('/v1/note', {
+const addNote = async (token, postId, content) => {
+    await doFetch('/v1/note', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -105,12 +105,10 @@ const addNote = async (token, postId, content) => {
         })
     })
 
-    console.log(response);
-
 }
 
 const updateNote = async (token, noteId, content) => {
-    const response = await doFetch(`/v1/note/${noteId}`, {
+    doFetch(`/v1/note/${noteId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -120,39 +118,33 @@ const updateNote = async (token, noteId, content) => {
             "content": content
         })
     })
-
-    console.log(response);
 }
 
 const deleteNote = async (token, noteId) => {
-    const response = await doFetch(`/v1/note/${noteId}`, {
+    doFetch(`/v1/note/${noteId}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
-
-    console.log(response);
 }
 
 const addBookMark = async (postId, token) => {
-    const response = await doFetch(`/v1/bookmark/${postId}`,{
+    doFetch(`/v1/bookmark/${postId}`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
-    console.log(response);
 }
 
 const removeBookMark = async (postId, token) => {
-    const response = await doFetch(`/v1/bookmark/${postId}`,{
+    doFetch(`/v1/bookmark/${postId}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
-    console.log(response);
 }
 
 export {

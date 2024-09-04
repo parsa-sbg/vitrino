@@ -25,7 +25,6 @@ export default function Post() {
         getSinglePostDetails(postId, userToken)
             .then(data => {
                 setPostdata(data)
-                console.log(data);
             })
     }, [userToken, location])
 
