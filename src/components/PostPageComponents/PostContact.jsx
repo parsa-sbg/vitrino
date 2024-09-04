@@ -3,7 +3,7 @@ import { CiBookmark } from "react-icons/ci";
 import propTypes from 'prop-types'
 import PostBookMark from "./PostBookMark";
 
-const PostContact = memo(({phone}) => {
+const PostContact = memo(({phone, isBookMarked, postId}) => {
 
     const [isNubmerShow, setIsNubmerShow] = useState(false)
 
@@ -16,7 +16,7 @@ const PostContact = memo(({phone}) => {
                     className="disabled:cursor-not-allowed disabled:bg-gray-500 bg-main py-1.5 px-4 rounded-xl text-white">
                     اطلاعات تماس
                 </button>
-                <PostBookMark />
+                <PostBookMark postId={postId} isBookMarked={isBookMarked} />
             </div>
             <div className={`${isNubmerShow && 'mt-5 max-h-32'} transition-all duration-300 max-h-0 overflow-hidden`}>
                 <div className="flex justify-between">
@@ -36,7 +36,9 @@ const PostContact = memo(({phone}) => {
 PostContact.displayName = 'PostContact'
 
 PostContact.propTypes = {
-    phone: propTypes.string
+    phone: propTypes.string,
+    isBookMarked: propTypes.bool,
+    postId: propTypes.string
 }
 
 export default PostContact

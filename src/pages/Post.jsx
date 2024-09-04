@@ -44,7 +44,7 @@ export default function Post() {
                 <div className="order-4 md:order-1 col-span-2 md:col-span-1">
                     <PostTitle title={postData?.title} />
                     <PostTime cityName={postData?.city.name} date={postData?.createdAt} />
-                    <PostContact phone={postData?.creator?.phone} />
+                    <PostContact postId={postData?._id} isBookMarked={postData?.bookmarked} phone={postData?.creator?.phone} />
                     <Postdetails price={postData?.price} dynamicFields={postData?.dynamicFields} />
                     <PostDesc desc={postData?.description} />
                 </div>

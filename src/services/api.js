@@ -135,6 +135,26 @@ const deleteNote = async (token, noteId) => {
     console.log(response);
 }
 
+const addBookMark = async (postId, token) => {
+    const response = await doFetch(`/v1/bookmark/${postId}`,{
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    console.log(response);
+}
+
+const removeBookMark = async (postId, token) => {
+    const response = await doFetch(`/v1/bookmark/${postId}`,{
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    console.log(response);
+}
+
 export {
     getAllCats,
     getAllLocations,
@@ -146,5 +166,7 @@ export {
     getUserNotes,
     addNote,
     updateNote,
-    deleteNote
+    deleteNote,
+    addBookMark,
+    removeBookMark
 }
