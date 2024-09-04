@@ -2,16 +2,19 @@ import { memo, useState } from "react"
 import { CiBookmark } from "react-icons/ci";
 import propTypes from 'prop-types'
 import PostBookMark from "./PostBookMark";
+import { useLoginValidation } from "../../hooks/useLoginValidation";
 
-const PostContact = memo(({phone, isBookMarked, postId}) => {
+const PostContact = memo(({ phone, isBookMarked, postId }) => {
 
     const [isNubmerShow, setIsNubmerShow] = useState(false)
+    const runWithCheckLogin = useLoginValidation()
+
 
     return (
         <div className="py-4 my-4 border-t dark:border-gray-500">
             <div className="flex justify-between items-center">
                 <button
-                    onClick={() => {setIsNubmerShow(true)}}
+                    onClick={() => { runWithCheckLogin(() => { setIsNubmerShow(true) }) }}
                     disabled={isNubmerShow}
                     className="disabled:cursor-not-allowed disabled:bg-gray-500 bg-main py-1.5 px-4 rounded-xl text-white">
                     اطلاعات تماس
