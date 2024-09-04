@@ -3,6 +3,7 @@ import Routes from './routes'
 import LocationsProvider from './contexts/locationsContext'
 import CategoryProvider from './contexts/categoryContext'
 import AuthContextProvider from './contexts/authContext'
+import NotesProvider from './contexts/notesContext'
 
 
 function App() {
@@ -10,11 +11,13 @@ function App() {
   return (
     <div className='app dark dark:bg-[#242424] transition-colors duration-300 dark:text-[#ffffff8f] text-gray-500'>
       <LocationsProvider>
-        <CategoryProvider>
-          <AuthContextProvider>
-            <Routes />
-          </AuthContextProvider>
-        </CategoryProvider>
+        <AuthContextProvider>
+          <NotesProvider>
+            <CategoryProvider>
+              <Routes />
+            </CategoryProvider>
+          </NotesProvider>
+        </AuthContextProvider>
       </LocationsProvider>
     </div>
   )

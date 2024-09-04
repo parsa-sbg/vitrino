@@ -62,20 +62,30 @@ const verifyOtpCode = async (phone, otp) => {
 }
 
 const getMe = async (token) => {
-    const response = await doFetch('/v1/auth/me',{
+    const response = await doFetch('/v1/auth/me', {
         headers: {
-            'Authorization' : 'Bearer ' + token
+            'Authorization': 'Bearer ' + token
         }
-    }) 
+    })
 
     return response.data.user
+}
+
+const getUserNotes = async (token) => {
+    const response = await doFetch('/v1/user/notes', {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+
+    return response.data.posts
 }
 
 
 const getSinglePostDetails = async (postId) => {
     const response = await doFetch(`/v1/post/${postId}`)
     return response.data.post || {}
-    
+
 }
 
 export {
@@ -85,5 +95,6 @@ export {
     sendOtpCode,
     verifyOtpCode,
     getMe,
-    getSinglePostDetails
+    getSinglePostDetails,
+    getUserNotes
 }
