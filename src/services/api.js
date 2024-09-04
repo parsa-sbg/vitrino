@@ -92,7 +92,7 @@ const getSinglePostDetails = async (postId, token) => {
 
 }
 
-const addNote = async (token, postId, content) => {
+const addNote = async (token, postId, content) => {    
     const response = await doFetch('/v1/note', {
         method: "POST",
         headers: {
@@ -109,6 +109,32 @@ const addNote = async (token, postId, content) => {
 
 }
 
+const updateNote = async (token, noteId, content) => {
+    const response = await doFetch(`/v1/note/${noteId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "content": content
+        })
+    })
+
+    console.log(response);
+}
+
+const deleteNote = async (token, noteId) => {
+    const response = await doFetch(`/v1/note/${noteId}`, {
+        method: "DELETE",
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+    console.log(response);
+}
+
 export {
     getAllCats,
     getAllLocations,
@@ -118,5 +144,7 @@ export {
     getMe,
     getSinglePostDetails,
     getUserNotes,
-    addNote
+    addNote,
+    updateNote,
+    deleteNote
 }

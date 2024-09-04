@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import Header from "../components/Header/Header";
 import MobileHeader from "../components/PostPageComponents/MobileHeader";
@@ -16,17 +16,22 @@ import { useAuth } from "../hooks/useAuth";
 export default function Post() {
     const [postData, setPostdata] = useState()
 
-    const {userToken} = useAuth()
+    const { userToken } = useAuth()
     const location = useLocation()
 
-    useEffect(() => {
+    const getDatasFromServer = useCallback(() => {
         const postId = location.search.replace("?", "")
+
         getSinglePostDetails(postId, userToken)
             .then(data => {
                 setPostdata(data)
                 console.log(data);
             })
-    }, [location])
+    }, [userToken, location])
+
+    useEffect(() => {
+        getDatasFromServer()
+    }, [getDatasFromServer])
 
     return (
         <div className="h-screen overflow-y-scroll custom-scrollbar container pt-[66.84px] md:pt-[90px] pb-10">
@@ -46,7 +51,7 @@ export default function Post() {
 
                 <div className="md:order-2 col-span-2 md:col-span-1">
                     <PostImagesSlider images={postData?.pics} />
-                    <PostNote postId={postData?._id} storedNote={postData?.note ? postData?.note : null} />
+                    <PostNote getDatasFromServer={getDatasFromServer} postId={postData?._id} storedNote={postData?.note ? postData?.note : null} />
                 </div>
 
                 <LoginMidal />
