@@ -11,14 +11,17 @@ import PostDesc from "../components/PostPageComponents/PostDesc";
 import PostImagesSlider from "../components/PostPageComponents/PostImagesSlider";
 import PostNote from "../components/PostPageComponents/PostNote";
 import LoginMidal from '../components/LoginModal/LoginModal'
+import { useAuth } from "../hooks/useAuth";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
+
+    const {userToken} = useAuth()
     const location = useLocation()
 
     useEffect(() => {
         const postId = location.search.replace("?", "")
-        getSinglePostDetails(postId)
+        getSinglePostDetails(postId, userToken)
             .then(data => {
                 setPostdata(data)
                 console.log(data);
@@ -43,7 +46,7 @@ export default function Post() {
 
                 <div className="md:order-2 col-span-2 md:col-span-1">
                     <PostImagesSlider images={postData?.pics} />
-                    <PostNote postId={postData?._id} />
+                    <PostNote postId={postData?._id} storedNote={postData?.note ? postData?.note : null} />
                 </div>
 
                 <LoginMidal />

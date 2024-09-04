@@ -3,7 +3,7 @@ import { useLoginValidation } from "../../hooks/useLoginValidation"
 import propTypes from 'prop-types'
 
 
-const PostNote = memo(({postId}) => {
+const PostNote = memo(({postId, storedNote}) => {
   const runWithCheckLogin = useLoginValidation()
 
   const inputFocusHandler = () => {

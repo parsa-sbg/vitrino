@@ -82,8 +82,12 @@ const getUserNotes = async (token) => {
 }
 
 
-const getSinglePostDetails = async (postId) => {
-    const response = await doFetch(`/v1/post/${postId}`)
+const getSinglePostDetails = async (postId, token) => {
+    const response = await doFetch(`/v1/post/${postId}`, {
+        headers: {
+            Authorization: token ? `Bearer ${token}` : ''
+        }
+    })
     return response.data.post || {}
 
 }
@@ -92,7 +96,7 @@ const addNote = async (token, postId, content) => {
     const response = await doFetch('/v1/note', {
         method: "POST",
         headers: {
-            "Content-Type" : "application/json", 
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({
@@ -102,7 +106,7 @@ const addNote = async (token, postId, content) => {
     })
 
     console.log(response);
-    
+
 }
 
 export {
