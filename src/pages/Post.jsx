@@ -10,6 +10,7 @@ import Postdetails from "../components/PostPageComponents/Postdetails";
 import PostDesc from "../components/PostPageComponents/PostDesc";
 import PostImagesSlider from "../components/PostPageComponents/PostImagesSlider";
 import PostNote from "../components/PostPageComponents/PostNote";
+import LoginMidal from '../components/LoginModal/LoginModal'
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -45,6 +46,7 @@ export default function Post() {
                     <PostNote />
                 </div>
 
+                <LoginMidal />
             </div>
 
         </div>
