@@ -88,6 +88,23 @@ const getSinglePostDetails = async (postId) => {
 
 }
 
+const addNote = async (token, postId, content) => {
+    const response = await doFetch('/v1/note', {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json", 
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "postId": postId,
+            "content": content
+        })
+    })
+
+    console.log(response);
+    
+}
+
 export {
     getAllCats,
     getAllLocations,
@@ -96,5 +113,6 @@ export {
     verifyOtpCode,
     getMe,
     getSinglePostDetails,
-    getUserNotes
+    getUserNotes,
+    addNote
 }

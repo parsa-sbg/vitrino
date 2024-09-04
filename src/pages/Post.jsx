@@ -43,7 +43,7 @@ export default function Post() {
 
                 <div className="md:order-2 col-span-2 md:col-span-1">
                     <PostImagesSlider images={postData?.pics} />
-                    <PostNote />
+                    <PostNote postId={postData?._id} />
                 </div>
 
                 <LoginMidal />
