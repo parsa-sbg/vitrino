@@ -26,7 +26,7 @@ export default function PostBookMark({ isBookMarked, postId }) {
 
     return (
         <div onClick={bookMarkBtnClickHandler}>
-            <FaBookmark className={`${isBookMarkBtnActive && 'stroke-main fill-main'} transition-colors cursor-pointer stroke-[30] fill-transparent`} size={30} />
+            <FaBookmark className={`${isBookMarkBtnActive && 'stroke-main !fill-main'} transition-colors cursor-pointer stroke-[30] fill-transparent`} size={30} />
         </div>
     )
 }
