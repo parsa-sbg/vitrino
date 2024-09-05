@@ -121,12 +121,16 @@ const updateNote = async (token, noteId, content) => {
 }
 
 const deleteNote = async (token, noteId) => {
-    doFetch(`/v1/note/${noteId}`, {
+    console.log(noteId);
+    
+    const res = await doFetch(`/v1/note/${noteId}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
+console.log(res);
+
 }
 
 const addBookMark = async (postId, token) => {
