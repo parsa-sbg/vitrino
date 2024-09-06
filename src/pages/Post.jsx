@@ -12,6 +12,7 @@ import PostImagesSlider from "../components/PostPageComponents/PostImagesSlider"
 import PostNote from "../components/PostPageComponents/PostNote";
 import LoginMidal from '../components/LoginModal/LoginModal'
 import { useAuth } from "../hooks/useAuth";
+import { useRecentSeens } from "../hooks/useRecentSeens";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -19,14 +20,17 @@ export default function Post() {
     const { userToken } = useAuth()
     const location = useLocation()
 
+    const {addRecentSeen} = useRecentSeens()
+
     const getDatasFromServer = useCallback(() => {
         const postId = location.search.replace("?", "")
 
         getSinglePostDetails(postId, userToken)
             .then(data => {
                 setPostdata(data)
+                addRecentSeen(data?.title, data?._id, data.pics[0].path, Date.now())
             })
-    }, [userToken, location])
+    }, [userToken, location, addRecentSeen])
 
     useEffect(() => {
         getDatasFromServer()
