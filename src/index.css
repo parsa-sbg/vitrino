@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    @font-face {
+        font-family: "vazir";
+        src: url(fonts/vazir/Vazirmatn-Regular.ttf);
+    }
+    *{
+        font-family: "vazir";
+    }
+}
+
 @layer utilities {
     .no-scrollbar::-webkit-scrollbar {
         display: none;

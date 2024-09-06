@@ -7,6 +7,9 @@ export default {
   darkMode: 'selector',
   theme: {
     extend: {
+      fontFamily: {
+        vazir: ["'vazir'", 'sans-serif']
+      },
       colors: {
         'main': {
           DEFAULT: '#7366FF'
