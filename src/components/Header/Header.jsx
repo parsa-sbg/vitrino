@@ -5,6 +5,7 @@ import HeaderMyVitrin from "./HeaderMyVitrin";
 import SiteBtn from "../SiteBtn";
 import { memo } from "react";
 import propTypes from 'prop-types'
+import { Link } from "react-router-dom";
 
 
 const Header = memo(({noInput}) => {
@@ -26,9 +27,9 @@ const Header = memo(({noInput}) => {
                 {/* header left */}
                 <div className="gap-2 hidden md:flex">
                     <HeaderMyVitrin />
-                    <div className="">
+                    <Link to={'/new'} className="">
                         <SiteBtn text={'ثبت آگهی'} />
-                    </div>
+                    </Link>
                 </div>
 
             </div>

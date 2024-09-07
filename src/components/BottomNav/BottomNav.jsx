@@ -34,7 +34,7 @@ export default memo(function BottomNav() {
                     دسته‌ها
                 </button>
 
-                <Link className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
+                <Link to={'/new'} className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
                     <FaPlusCircle />
                     ثبت آگهی
                 </Link>

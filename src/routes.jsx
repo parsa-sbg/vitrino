@@ -7,6 +7,7 @@ import UserBookmarks from "./components/MyVitrin/UserBookmarks/UserBookmarks"
 import UserNotes from "./components/MyVitrin/UserNotes/UserNotes"
 import UserRecentSeens from "./components/MyVitrin/UserRecentSeens/UserRecentSeens"
 import Post from "./pages/Post"
+import New from "./pages/New"
 
 export default function Routes() {
     const routes = useRoutes([
@@ -43,6 +44,10 @@ export default function Routes() {
                     element: <UserRecentSeens />
                 }  
             ]
+        },
+        {
+            path: '/new',
+            element: <New />
         },
         {
             path: '*',
