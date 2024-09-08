@@ -4,14 +4,17 @@ import CitySelector from './citySelector'
 import { useState } from 'react'
 import { useLocations } from '../../../hooks/useLocations'
 import NeighborhoodSelector from './NeighborhoodSelector'
+import PicsSelector from './picsSelector'
 
 
 export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const {confirmedCities} = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
 
+    // main datas
     const [selectedCity, setSelectedCity] = useState(confirmedCities[0])
     const [selectedNeighborhood, setSelectedNeighborhood] = useState({})
+    const [postPics, setPostPics] = useState([])
 
     return (
         <div className='w-full max-w-[490px]'>
@@ -27,6 +30,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
             <CitySelector setSelectedNeighborhood={setSelectedNeighborhood} selectedCity={selectedCity} setSelectedCity={setSelectedCity} setSelectedCityneighborhoods={setSelectedCityneighborhoods} />
             {selectedCityneighborhoods.length > 0 && <NeighborhoodSelector selectedNeighborhood={selectedNeighborhood} setSelectedNeighborhood={setSelectedNeighborhood} selectedCityneighborhoods={selectedCityneighborhoods} />}
+
+            <PicsSelector postPics={postPics} setPostPics={setPostPics} />
 
         </div>
     )
