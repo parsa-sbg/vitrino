@@ -9,7 +9,7 @@ export default function New() {
     const [confiredCat, setConfiredCat] = useState(null)
 
     return (
-        <div className="min-h-screen container">
+        <div className="min-h-screen pb-[500px] container">
 
             <div className="hidden md:block">
                 <Header noInput />
@@ -21,7 +21,7 @@ export default function New() {
             <div className="pt-[66.84px] md:pt-[90px] flex justify-center">
                 {
                     confiredCat
-                        ? <NewPostDetails />
+                        ? <NewPostDetails confiredCat={confiredCat} setConfiredCat={setConfiredCat} />
                         : <NewCatSelector setConfiredCat={setConfiredCat} />
                 }
             </div>

@@ -3,7 +3,8 @@ import { FaCheck } from "react-icons/fa";
 import { useLocations } from '../../../hooks/useLocations';
 import { memo, useEffect, useState } from 'react';
 
-const CityItem = memo(({ cityName, cityId }) => {
+const CityItem = memo(({ cityName, cityId, neighborhoods }) => {
+console.log(neighborhoods);
 
     const [ischecked, setIschecked] = useState(false)
     const { removeSelectedCity, addSelectedCity, isThisCitySelected } = useLocations()
@@ -21,7 +22,7 @@ const CityItem = memo(({ cityName, cityId }) => {
         if (isThisCitySelected(cityId)) {
             removeSelectedCity(cityId)
         } else {
-            addSelectedCity(cityId, cityName)
+            addSelectedCity(cityId, cityName, neighborhoods)
         }
     }
 
@@ -51,7 +52,8 @@ CityItem.displayName = 'CityItem'
 CityItem.propTypes = {
     cityName: propTypes.string,
     cityId: propTypes.number,
-    isActive: propTypes.bool
+    isActive: propTypes.bool,
+    neighborhood: propTypes.array
 }
 
 export default CityItem

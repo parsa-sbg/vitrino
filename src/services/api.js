@@ -160,6 +160,22 @@ const getUserBookMarks = async (token) => {
     return res.data.posts
 }
 
+
+const createNewPost = async (categoryId, userToken) => {
+    const res = doFetch(`/v1/post/${categoryId}`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${userToken}`,
+            "Content-Type": "multipart/form-data"
+        },
+        body: JSON.stringify({
+            
+        })
+    })
+
+    console.log(res);
+}
+
 export {
     getAllCats,
     getAllLocations,
@@ -174,5 +190,6 @@ export {
     deleteNote,
     addBookMark,
     removeBookMark,
-    getUserBookMarks
+    getUserBookMarks,
+    createNewPost
 }

@@ -13,7 +13,6 @@ export default function NewCatSelector({ setConfiredCat }) {
     const [shownCats, setShownCats] = useState([])
     const [selectedCat, setSelectedCat] = useState(null)
     const [parentcat, setParentcat] = useState(null)
-    console.log(allCats);
 
     useEffect(() => {
         setShownCats(allCats)
