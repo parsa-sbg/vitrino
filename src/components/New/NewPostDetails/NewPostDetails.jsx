@@ -5,9 +5,11 @@ import { useState } from 'react'
 import { useLocations } from '../../../hooks/useLocations'
 import NeighborhoodSelector from './NeighborhoodSelector'
 import PicsSelector from './picsSelector'
+import DynamicFieldsSelector from './DynamicFieldsSelector'
 
 
 export default function NewPostDetails({ confiredCat, setConfiredCat }) {
+    
     const {confirmedCities} = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
 
@@ -15,6 +17,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [selectedCity, setSelectedCity] = useState(confirmedCities[0])
     const [selectedNeighborhood, setSelectedNeighborhood] = useState({})
     const [postPics, setPostPics] = useState([])
+    const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
+
 
     return (
         <div className='w-full max-w-[490px]'>
@@ -32,6 +36,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
             {selectedCityneighborhoods.length > 0 && <NeighborhoodSelector selectedNeighborhood={selectedNeighborhood} setSelectedNeighborhood={setSelectedNeighborhood} selectedCityneighborhoods={selectedCityneighborhoods} />}
 
             <PicsSelector postPics={postPics} setPostPics={setPostPics} />
+
+            <DynamicFieldsSelector newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
 
         </div>
     )

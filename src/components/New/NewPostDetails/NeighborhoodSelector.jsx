@@ -42,7 +42,7 @@ export default function NeighborhoodSelector({ selectedCityneighborhoods, setSel
           className="border-2 cursor-pointer hover:border-[#333] dark:hover:border-white dark:focus:border-main outline-none dark:bg-transparent dark:border-gray-500 focus:border-main hover:border-2 transition-colors border-gray-200 rounded-md py-2 px-3 w-full" type="text" />
 
 
-        <div className={`${isNeighListOpen && '!block'} hidden shadow-sm shadow-gray-600 text-white bg-white dark:bg-[#242424] absolute top-[calc(100%+10px)] rounded-lg right-0 left-0 overflow-y-scroll max-h-56 custom-scrollbar`}>
+        <div className={`${isNeighListOpen && '!block'} hidden shadow-sm z-20 shadow-gray-600 text-white bg-white dark:bg-[#242424] absolute top-[calc(100%+10px)] rounded-lg right-0 left-0 overflow-y-scroll max-h-56 custom-scrollbar`}>
           {filteredNeighs?.map(neight => (
             <button
               onClick={() => {
