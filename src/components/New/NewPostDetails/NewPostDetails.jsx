@@ -6,9 +6,10 @@ import { useLocations } from '../../../hooks/useLocations'
 import NeighborhoodSelector from './NeighborhoodSelector'
 import PicsSelector from './picsSelector'
 import DynamicFieldsSelector from './DynamicFieldsSelector'
+import TitleSelector from './TitleSelector'
 
 
-export default function NewPostDetails({ confiredCat, setConfiredCat }) {
+export default function NewPostDetails({ confiredCat, setConfiredCat }) {    
     
     const {confirmedCities} = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
@@ -18,6 +19,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [selectedNeighborhood, setSelectedNeighborhood] = useState({})
     const [postPics, setPostPics] = useState([])
     const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
+    const [newPostTitle, setNewPostTitle] = useState('')
 
 
     return (
@@ -38,6 +40,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
             <PicsSelector postPics={postPics} setPostPics={setPostPics} />
 
             <DynamicFieldsSelector newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
+            
+            <TitleSelector newPostTitle={newPostTitle} setNewPostTitle={setNewPostTitle} />
 
         </div>
     )

@@ -10,7 +10,6 @@ const DynamicFieldsSelector = memo(({ catDynamicFields, newPostDynamicFields, se
 
     setNewPostDynamicFields(prev => {
       prev[slug] = value    
-      console.log(prev);
       return prev
     })
 
