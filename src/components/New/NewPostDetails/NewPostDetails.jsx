@@ -1,7 +1,7 @@
 import propTypes from 'prop-types'
 import SiteBtn from '../../SiteBtn'
 import CitySelector from './citySelector'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useLocations } from '../../../hooks/useLocations'
 import NeighborhoodSelector from './NeighborhoodSelector'
 import PicsSelector from './picsSelector'
@@ -18,15 +18,55 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const { confirmedCities } = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
 
+    const [validationObj, setValidationObj] = useState({})
+
     // main datas
     const [selectedCity, setSelectedCity] = useState(confirmedCities[0])
     const [selectedNeighborhood, setSelectedNeighborhood] = useState({})
     const [postPics, setPostPics] = useState([])
-    const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
     const [newPostTitle, setNewPostTitle] = useState('')
     const [newPostDesc, setNewPostDesc] = useState('')
     const [newPostPrice, setNewPostPrice] = useState(null)
+    const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
 
+    const validateInputs = useCallback(() => {
+
+        if (newPostTitle.length < 2) {
+            setValidationObj((prev) => {
+                const newObj = { ...prev }
+                newObj.title = false
+                return newObj
+            })
+        }
+
+        if (newPostDesc.length < 2) {
+            setValidationObj((prev) => {
+                const newObj = { ...prev }
+                newObj.desc = false
+                return newObj
+            })
+        }
+
+        if (!newPostPrice || newPostPrice < 0) {
+            setValidationObj((prev) => {
+                const newObj = { ...prev }
+                newObj.price = false
+                return newObj
+            })
+        }
+
+        Object.keys(newPostDynamicFields).forEach(key => {
+            if (!newPostDynamicFields[key].length) {
+                setValidationObj((prev) => {
+                    const newObj = { ...prev }
+                    newObj[key] = false
+                    return newObj
+                })
+            }
+        })
+
+
+    }, [newPostTitle, newPostDesc, newPostPrice, newPostDynamicFields])
 
     return (
         <div className='w-full max-w-[490px]'>
@@ -45,17 +85,17 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
             <PicsSelector postPics={postPics} setPostPics={setPostPics} />
 
-            <DynamicFieldsSelector newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
+            <DynamicFieldsSelector validationObj={validationObj} setValidationObj={setValidationObj} newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
 
-            <PriceSelector newPostPrice={newPostPrice} setNewPostPrice={setNewPostPrice} />
-            
-            <TitleSelector newPostTitle={newPostTitle} setNewPostTitle={setNewPostTitle} />
+            <PriceSelector validationObj={validationObj} setValidationObj={setValidationObj} newPostPrice={newPostPrice} setNewPostPrice={setNewPostPrice} />
 
-            <DescSelector newPostDesc={newPostDesc} setNewPostDesc={setNewPostDesc} />
+            <TitleSelector validationObj={validationObj} setValidationObj={setValidationObj} newPostTitle={newPostTitle} setNewPostTitle={setNewPostTitle} />
+
+            <DescSelector validationObj={validationObj} setValidationObj={setValidationObj} newPostDesc={newPostDesc} setNewPostDesc={setNewPostDesc} />
 
             <div className='flex gap-5 justify-between mt-10'>
                 <CancelBtn />
-                <ConfirmBtn />
+                <ConfirmBtn validateInputs={validateInputs} />
             </div>
 
         </div>
