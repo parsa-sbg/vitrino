@@ -8,11 +8,13 @@ import PicsSelector from './picsSelector'
 import DynamicFieldsSelector from './DynamicFieldsSelector'
 import TitleSelector from './TitleSelector'
 import DescSelector from './descSelector'
+import ConfirmBtn from './ConfirmBtn'
+import CancelBtn from './CancelBtn'
 
 
-export default function NewPostDetails({ confiredCat, setConfiredCat }) {    
-    
-    const {confirmedCities} = useLocations()
+export default function NewPostDetails({ confiredCat, setConfiredCat }) {
+
+    const { confirmedCities } = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
 
     // main datas
@@ -26,7 +28,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
     return (
         <div className='w-full max-w-[490px]'>
-            
+
             <h5 className='text-lg font-semibold'>ثبت آگهی</h5>
             <div className='relative mb-24'>
                 <span className='my-2 w-56 p-10 mx-auto border flex justify-center items-center rounded-lg'>{confiredCat.title}</span>
@@ -42,10 +44,15 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
             <PicsSelector postPics={postPics} setPostPics={setPostPics} />
 
             <DynamicFieldsSelector newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
-            
+
             <TitleSelector newPostTitle={newPostTitle} setNewPostTitle={setNewPostTitle} />
 
             <DescSelector newPostDesc={newPostDesc} setNewPostDesc={setNewPostDesc} />
+
+            <div className='flex gap-5 justify-between mt-10'>
+                <CancelBtn />
+                <ConfirmBtn />
+            </div>
 
         </div>
     )
