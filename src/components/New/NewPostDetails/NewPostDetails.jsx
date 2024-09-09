@@ -10,6 +10,7 @@ import TitleSelector from './TitleSelector'
 import DescSelector from './descSelector'
 import ConfirmBtn from './ConfirmBtn'
 import CancelBtn from './CancelBtn'
+import PriceSelector from './PriceSelector'
 
 
 export default function NewPostDetails({ confiredCat, setConfiredCat }) {
@@ -24,6 +25,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
     const [newPostTitle, setNewPostTitle] = useState('')
     const [newPostDesc, setNewPostDesc] = useState('')
+    const [newPostPrice, setNewPostPrice] = useState(null)
 
 
     return (
@@ -45,6 +47,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
             <DynamicFieldsSelector newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
 
+            <PriceSelector newPostPrice={newPostPrice} setNewPostPrice={setNewPostPrice} />
+            
             <TitleSelector newPostTitle={newPostTitle} setNewPostTitle={setNewPostTitle} />
 
             <DescSelector newPostDesc={newPostDesc} setNewPostDesc={setNewPostDesc} />
