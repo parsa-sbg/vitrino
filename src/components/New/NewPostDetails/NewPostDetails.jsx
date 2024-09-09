@@ -7,6 +7,7 @@ import NeighborhoodSelector from './NeighborhoodSelector'
 import PicsSelector from './picsSelector'
 import DynamicFieldsSelector from './DynamicFieldsSelector'
 import TitleSelector from './TitleSelector'
+import DescSelector from './descSelector'
 
 
 export default function NewPostDetails({ confiredCat, setConfiredCat }) {    
@@ -20,6 +21,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [postPics, setPostPics] = useState([])
     const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
     const [newPostTitle, setNewPostTitle] = useState('')
+    const [newPostDesc, setNewPostDesc] = useState('')
 
 
     return (
@@ -42,6 +44,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
             <DynamicFieldsSelector newPostDynamicFields={newPostDynamicFields} setNewPostDynamicFields={setNewPostDynamicFields} catDynamicFields={confiredCat.productFields} />
             
             <TitleSelector newPostTitle={newPostTitle} setNewPostTitle={setNewPostTitle} />
+
+            <DescSelector newPostDesc={newPostDesc} setNewPostDesc={setNewPostDesc} />
 
         </div>
     )
