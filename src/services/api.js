@@ -161,16 +161,27 @@ const getUserBookMarks = async (token) => {
 }
 
 
-const createNewPost = async (categoryId, userToken) => {
-    const res = doFetch(`/v1/post/${categoryId}`, {
+const createNewPost = async (categoryId, userToken, cityId, title, description, price, categoryFields, pics) => {
+
+    const formData = new FormData()
+    formData.append('city', cityId)
+    formData.append('neighborhood', cityId)
+    formData.append('title', title)
+    formData.append('map', JSON.stringify({x:0, y:0}))
+    formData.append('description', description)
+    formData.append('price', price)
+    formData.append('categoryFields', JSON.stringify(categoryFields))
+
+    pics.map(pic => {
+        formData.append('pics', pic)
+    })
+
+    const res = await doFetch(`/v1/post/${categoryId}`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${userToken}`,
-            "Content-Type": "multipart/form-data"
         },
-        body: JSON.stringify({
-            
-        })
+        body: formData
     })
 
     console.log(res);

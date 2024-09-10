@@ -6,22 +6,22 @@ export default function SelectBox({ fieldData, fieldChangeHandler, validationObj
     const [isNeighListOpen, setIsNeighListOpen] = useState(false)
     const [inputvalue, setInputvalue] = useState('')
 
+    const [isValid, setIsValid] = useState(true)
+
+
     useEffect(() => {
         setValidationObj(prev => {
             prev[fieldData.slug] = true
             return prev
         })
-    }, [setValidationObj, fieldData])
+        setIsValid(validationObj[fieldData.slug])
+    }, [setValidationObj, fieldData, validationObj])
 
 
     useEffect(() => {
         fieldChangeHandler(fieldData.slug, inputvalue)
 
-        setValidationObj((prev) => {
-            const newObj = { ...prev }
-            newObj[fieldData.slug] = true
-            return newObj
-        })
+        setIsValid(true)
     }, [inputvalue, fieldChangeHandler, fieldData, setValidationObj])
 
 
@@ -40,15 +40,14 @@ export default function SelectBox({ fieldData, fieldChangeHandler, validationObj
             <h6 className='text-lg font-semibold mb-2 mt-5'>{fieldData.name}</h6>
 
             <div className="relative w-full">
-                {console.log(!(validationObj[fieldData.slug]))}
                 <input
                     placeholder='انتخاب کنید...'
-                    onChange={(e) => {setInputvalue(e.target.value.trim())}}
+                    onChange={(e) => { setInputvalue(e.target.value.trim()) }}
                     onFocus={focusHandler}
                     onBlur={blurHandler}
                     readOnly
                     value={inputvalue}
-                    className={`${!validationObj[fieldData.slug] && '!border-red-600 ' } border-2 cursor-pointer hover:border-[#333] dark:hover:border-white dark:focus:border-main outline-none dark:bg-transparent dark:border-gray-500 focus:border-main hover:border-2 transition-colors border-gray-200 rounded-md py-2 px-3 w-full`} type="text" />
+                    className={`${!isValid && '!border-red-600 '} border-2 cursor-pointer hover:border-[#333] dark:hover:border-white dark:focus:border-main outline-none dark:bg-transparent dark:border-gray-500 focus:border-main hover:border-2 transition-colors border-gray-200 rounded-md py-2 px-3 w-full`} type="text" />
 
 
                 <div className={`${isNeighListOpen && '!block'} z-20 hidden shadow-sm shadow-gray-600 text-white bg-white dark:bg-[#242424] absolute top-[calc(100%+10px)] rounded-lg right-0 left-0 overflow-y-scroll max-h-56 custom-scrollbar`}>

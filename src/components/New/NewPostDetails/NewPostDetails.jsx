@@ -11,14 +11,19 @@ import DescSelector from './descSelector'
 import ConfirmBtn from './ConfirmBtn'
 import CancelBtn from './CancelBtn'
 import PriceSelector from './PriceSelector'
+import { createNewPost } from '../../../services/api'
+import {useAuth} from '../../../hooks/useAuth'
 
 
 export default function NewPostDetails({ confiredCat, setConfiredCat }) {
+    
 
     const { confirmedCities } = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
 
     const [validationObj, setValidationObj] = useState({})
+
+    const [isFirstRender, setIsFirstRender] = useState(true)
 
     // main datas
     const [selectedCity, setSelectedCity] = useState(confirmedCities[0])
@@ -29,12 +34,35 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [newPostPrice, setNewPostPrice] = useState(null)
     const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
 
+    const {userToken} = useAuth()
+
+
+    useEffect(() => {
+        
+        const res = Object.values(validationObj).some(value => {
+            return value == false
+        })
+
+        if (isFirstRender) {
+            setIsFirstRender(false)
+        } else {
+            !res && createNewPost(confiredCat._id, userToken, selectedCity.id, newPostTitle, newPostDesc, newPostPrice, newPostDynamicFields, postPics)
+        }
+
+    }, [validationObj])
+
     const validateInputs = useCallback(() => {
 
         if (newPostTitle.length < 2) {
             setValidationObj((prev) => {
                 const newObj = { ...prev }
                 newObj.title = false
+                return newObj
+            })
+        } else {
+            setValidationObj((prev) => {
+                const newObj = { ...prev }
+                newObj.title = true
                 return newObj
             })
         }
@@ -45,12 +73,24 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
                 newObj.desc = false
                 return newObj
             })
+        } else {
+            setValidationObj((prev) => {
+                const newObj = { ...prev }
+                newObj.desc = true
+                return newObj
+            })
         }
 
         if (!newPostPrice || newPostPrice < 0) {
             setValidationObj((prev) => {
                 const newObj = { ...prev }
                 newObj.price = false
+                return newObj
+            })
+        } else {
+            setValidationObj((prev) => {
+                const newObj = { ...prev }
+                newObj.price = true
                 return newObj
             })
         }
@@ -60,6 +100,12 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
                 setValidationObj((prev) => {
                     const newObj = { ...prev }
                     newObj[key] = false
+                    return newObj
+                })
+            } else {
+                setValidationObj((prev) => {
+                    const newObj = { ...prev }
+                    newObj[key] = true
                     return newObj
                 })
             }
@@ -95,7 +141,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
             <div className='flex gap-5 justify-between mt-10'>
                 <CancelBtn />
-                <ConfirmBtn validateInputs={validateInputs} />
+                <ConfirmBtn validationObj={validationObj} validateInputs={validateInputs} />
             </div>
 
         </div>
