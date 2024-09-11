@@ -9,7 +9,7 @@ export default function UserPostBox({ post, showDeleteModal }) {
 
       <div className="flex gap-2 h-full">
         <div className="overflow-hidden h-full min-w-[86.57px] rounded-lg">
-          <img className="object-cover h-full w-full" src={baseUrl + '/' + post.pics[0].path} alt="" />
+          <img className="object-cover h-full w-full" src={baseUrl + '/' + post.pics[0]?.path} alt="" />
         </div>
         <div className="flex flex-col justify-between w-full">
           <h4 className="line-clamp-1 dark:text-white text-[#333] font-semibold">{post.title}</h4>

@@ -96,7 +96,9 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
         }
 
         Object.keys(newPostDynamicFields).forEach(key => {
-            if (!newPostDynamicFields[key].length) {
+            const dynamicFieldType = confiredCat.productFields.find(field => field.slug == key).type
+            
+            if (!newPostDynamicFields[key].length && dynamicFieldType !== 'checkbox') {                
                 setValidationObj((prev) => {
                     const newObj = { ...prev }
                     newObj[key] = false
@@ -112,7 +114,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
         })
 
 
-    }, [newPostTitle, newPostDesc, newPostPrice, newPostDynamicFields])
+    }, [newPostTitle, newPostDesc, newPostPrice, newPostDynamicFields, confiredCat])
 
     return (
         <div className='w-full max-w-[490px]'>
