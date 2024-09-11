@@ -187,6 +187,26 @@ const createNewPost = async (categoryId, userToken, cityId, title, description, 
     console.log(res);
 }
 
+const getUserPosts = async (token) => {
+    
+    const response = await doFetch(`/v1/user/posts`, {
+        headers: {
+            Authorization : `Bearer ${token}`
+        }
+    })
+    return response.data.posts    
+}
+
+const deletePost = async (token, postId) => {
+    const res = await doFetch(`/v1/post/${postId}`, {
+        method : "DELETE",
+        headers: {
+            Authorization : `Bearer ${token}`
+        }
+    })
+    console.log(res);
+}
+
 export {
     getAllCats,
     getAllLocations,
@@ -202,5 +222,7 @@ export {
     addBookMark,
     removeBookMark,
     getUserBookMarks,
-    createNewPost
+    createNewPost,
+    getUserPosts,
+    deletePost
 }
