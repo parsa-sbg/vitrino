@@ -1,13 +1,12 @@
-import { memo, useState } from "react"
+import { memo } from "react"
 import { FaAngleLeft } from "react-icons/fa6";
 import { useCategory } from '../../hooks/useCategory'
 
 
 export default memo(function PostsPageCatSelector() {
 
-    const [openCatIds, setOpenCatIds] = useState([])
 
-    const { allCats, selectedCatId, setSelectedCatId } = useCategory()
+    const { allCats, selectedCatId, setSelectedCatId, openCatIds ,setOpenCatIds } = useCategory()
 
 
     const toggleCat = (catId, parentId) => {

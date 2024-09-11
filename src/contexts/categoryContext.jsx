@@ -7,6 +7,7 @@ export const CategoryContext = createContext()
 export default function CategoryProvider({ children }) {
 
     const [allCats, setAllCats] = useState([])
+    const [openCatIds, setOpenCatIds] = useState([])
     const [selectedCatId, setSelectedCatId] = useState(null)
 
     useEffect(() => {
@@ -22,7 +23,9 @@ export default function CategoryProvider({ children }) {
             value={{
                 allCats,
                 selectedCatId,
-                setSelectedCatId
+                setSelectedCatId,
+                openCatIds,
+                setOpenCatIds
             }}>
             {children}
         </CategoryContext.Provider>
