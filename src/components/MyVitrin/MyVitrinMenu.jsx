@@ -26,10 +26,12 @@ export default function MyVitrinMenu() {
                 <span className="text-sm text-gray-500 dark:text-gray-200 font-light">تلفن {userName}</span>
             </div>
 
-            <MyVitrinMenuItem href={'/myvitrin/posts'} name={'آگهی‌های من'} Icon={RiFilePaper2Line} />
-            <MyVitrinMenuItem href={'/myvitrin/bookmarks'} name={'نشان‌ها'} Icon={FaRegBookmark} />
-            <MyVitrinMenuItem href={'/myvitrin/notes'} name={'یادداشت‌ها'} Icon={GrNotes} />
-            <MyVitrinMenuItem href={'/myvitrin/recent-seens'} name={'بازدیدهای اخیر'} Icon={RxCountdownTimer} />
+            <div className="flex flex-col gap-2 my-2">
+                <MyVitrinMenuItem href={'/myvitrin/posts'} name={'آگهی‌های من'} Icon={RiFilePaper2Line} />
+                <MyVitrinMenuItem href={'/myvitrin/bookmarks'} name={'نشان‌ها'} Icon={FaRegBookmark} />
+                <MyVitrinMenuItem href={'/myvitrin/notes'} name={'یادداشت‌ها'} Icon={GrNotes} />
+                <MyVitrinMenuItem href={'/myvitrin/recent-seens'} name={'بازدیدهای اخیر'} Icon={RxCountdownTimer} />
+            </div>
 
             <LogOutBtn />
         </div>

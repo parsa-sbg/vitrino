@@ -7,7 +7,7 @@ export default function MyVitrinMenuItem({ href, Icon, name }) {
             className={
                 ({ isActive }) => [
                     isActive && `text-main`,
-                    'transition-colors duration-200 flex items-center gap-2 mt-5'
+                    'transition-colors flex items-center gap-2 hover:bg-gray-300 dark:hover:bg-gray-500 !bg-opacity-30 py-2 px-1 rounded-md'
                 ].join(" ")
             }>
 
