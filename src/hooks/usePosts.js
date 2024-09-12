@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getPosts } from "../services/api";
 import { useLocations } from "./useLocations";
-import {useCategory} from "./useCategory"
+import { useCategory } from "./useCategory"
+import { PostsContext } from "../contexts/postsContext";
 
 
 export default function usePosts() {
-    const [isLoading, setIsLoading] = useState(false)
-    const [posts, setPosts] = useState([])
-
-    const { confirmedCities } = useLocations()
-    const {selectedCatId} = useCategory()
-    
 
 
-    useEffect( () => {
-        setIsLoading(true)
-        getPosts(confirmedCities, selectedCatId)
-            .then(posts => {                
-                setPosts(posts)
-                setIsLoading(false)
-            })
-    }, [confirmedCities, selectedCatId])
+    return useContext(PostsContext)
 
-    return { posts, isLoading }
+
 }

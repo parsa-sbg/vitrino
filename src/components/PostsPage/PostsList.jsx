@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import PostBox from "./PostBox";
 import usePosts from '../../hooks/usePosts'
 import NotFoundVector from "./NotFoundVector";
@@ -6,7 +6,7 @@ import NotFoundVector from "./NotFoundVector";
 
 export default memo(function PostsList() {
 
-  const { posts, isLoading } = usePosts()
+  const { posts, isLoading, getMorePosts, getMorePostsIsLoading, isAllPostsWereShown } = usePosts()
 
   const generateSkeletonLoader = () => {
     const SkeleteLoaderCount = Array.from({ length: 10 })
@@ -34,7 +34,20 @@ export default memo(function PostsList() {
     ))
   }
 
-  if (!posts.length) return (
+
+  const onScrollHandler = useCallback((e) => {
+    const currentHegith = e.target.scrollTop
+    const maxHeigth = e.target.scrollHeight - e.target.offsetHeight
+
+    if (currentHegith >= maxHeigth - 100 && !isAllPostsWereShown) {
+
+      // console.log('request');
+
+      getMorePosts()
+    }
+  }, [getMorePosts, isAllPostsWereShown])
+
+  if (!posts?.length) return (
     <div className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-full custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
       <div className="flex flex-col items-center justify-center w-full h-full col-span-12">
         <NotFoundVector />
@@ -48,7 +61,9 @@ export default memo(function PostsList() {
 
   return (
 
-    <div className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-fit custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
+    <div
+      onScroll={onScrollHandler}
+      className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-fit custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
 
       {isLoading && generateSkeletonLoader()}
 
@@ -59,6 +74,18 @@ export default memo(function PostsList() {
           <PostBox postId={post._id} title={post.title} price={post.price} imagePath={post?.pics[0]?.path} cityName={post.city.name} />
         </div>
       ))}
+
+      {(getMorePostsIsLoading &&
+        <div className="flex items-center justify-center h-40 col-span-6">
+          <div className="animate-spin rounded-full border-4 border-gray-500 w-10 h-10 border-r-main "></div>
+        </div>
+      )}
+
+      {isAllPostsWereShown &&
+        <div className="flex items-center justify-center h-40 col-span-6">
+          <span className="text-yellow-700 font-semibold text-lg">تمامی پست ها نمایش داده شد.</span>
+        </div>
+      }
     </div>)
 
 })

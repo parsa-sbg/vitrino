@@ -25,15 +25,14 @@ const getAllCats = async () => {
 }
 
 
-const getPosts = async (citiesId, selectedCatId) => {
+const getPosts = async (citiesId, selectedCatId, limit) => {
 
     const citiesIdString = citiesId ? citiesId.map(city => city.id).join('|') : null
 
-    const url = `/v1/post/${`?categoryId=${selectedCatId ? selectedCatId : ''}`}&${citiesIdString && `city=${citiesIdString}`}`
-
-
+    const url = `/v1/post/${`?limit=${limit}&categoryId=${selectedCatId ? selectedCatId : ''}`}&${citiesIdString && `city=${citiesIdString}`}`
     const res = await doFetch(url)
-    return res.data.posts || []
+    return res?.data || { posts: [], pagination: {} }
+
 }
 
 
@@ -163,19 +162,19 @@ const getUserBookMarks = async (token) => {
 
 const publishNewPost = async (postId) => {
     console.log(adminToken);
-    
+
     const res = await doFetch(`/v1/post/${postId}/status`, {
         method: "PUT",
         headers: {
             Authorization: `Bearer ${adminToken}`,
             "Content-Type": "application/json",
-        }, 
+        },
         body: JSON.stringify({
             status: "published"
         })
     })
 
-    console.log( "publish result => ", res);
+    console.log("publish result => ", res);
 }
 
 
@@ -185,7 +184,7 @@ const createNewPost = async (categoryId, userToken, cityId, title, description, 
     formData.append('city', cityId)
     formData.append('neighborhood', cityId)
     formData.append('title', title)
-    formData.append('map', JSON.stringify({x:0, y:0}))
+    formData.append('map', JSON.stringify({ x: 0, y: 0 }))
     formData.append('description', description)
     formData.append('price', price)
     formData.append('categoryFields', JSON.stringify(categoryFields))
@@ -205,20 +204,20 @@ const createNewPost = async (categoryId, userToken, cityId, title, description, 
 }
 
 const getUserPosts = async (token) => {
-    
+
     const response = await doFetch(`/v1/user/posts`, {
         headers: {
-            Authorization : `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         }
     })
-    return response.data.posts    
+    return response.data.posts
 }
 
 const deletePost = async (token, postId) => {
     const res = await doFetch(`/v1/post/${postId}`, {
-        method : "DELETE",
+        method: "DELETE",
         headers: {
-            Authorization : `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         }
     })
     console.log(res);
