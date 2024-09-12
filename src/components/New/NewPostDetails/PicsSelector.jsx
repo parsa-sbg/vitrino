@@ -7,9 +7,10 @@ import { MdDelete } from "react-icons/md";
 export default function PicsSelector({ postPics, setPostPics }) {
     const [images, setImages] = useState([]);
 
-    useEffect(() => {
-        postPics.forEach((file, index) => {
+    useEffect(() => {        
+        postPics?.forEach((file, index) => {
             const fileReader = new FileReader();
+            
             fileReader.readAsDataURL(file);
 
             fileReader.onload = () => {
@@ -22,8 +23,8 @@ export default function PicsSelector({ postPics, setPostPics }) {
         });
     }, [postPics]);
 
-    const inputChangehsndler = (e) => {
-        setPostPics(prevPics => [...prevPics, e.target.files[0]]);
+    const inputChangehsndler = async (e) => {        
+        await setPostPics(prevPics =>  [...prevPics, e.target.files[0]] )
         e.target.value = null
     }
 

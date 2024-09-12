@@ -1,4 +1,5 @@
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+const adminToken = import.meta.env.VITE_APP_ADMIN_TOKEN;
 
 
 const doFetch = async (path, options = {}) => {
@@ -160,6 +161,23 @@ const getUserBookMarks = async (token) => {
     return res.data.posts
 }
 
+const publishNewPost = async (postId) => {
+    console.log(adminToken);
+    
+    const res = await doFetch(`/v1/post/${postId}/status`, {
+        method: "PUT",
+        headers: {
+            Authorization: `Bearer ${adminToken}`,
+            "Content-Type": "application/json",
+        }, 
+        body: JSON.stringify({
+            status: "published"
+        })
+    })
+
+    console.log( "publish result => ", res);
+}
+
 
 const createNewPost = async (categoryId, userToken, cityId, title, description, price, categoryFields, pics) => {
 
@@ -183,8 +201,7 @@ const createNewPost = async (categoryId, userToken, cityId, title, description, 
         },
         body: formData
     })
-
-    console.log(res);
+    publishNewPost(res.data.post._id)
 }
 
 const getUserPosts = async (token) => {
