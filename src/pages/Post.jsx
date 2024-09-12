@@ -28,7 +28,7 @@ export default function Post() {
         getSinglePostDetails(postId, userToken)
             .then(data => {
                 setPostdata(data)
-                addRecentSeen(data?.title, data?._id, data.pics[0].path, Date.now())
+                addRecentSeen(data?.title, data?._id, data.pics[0]?.path, Date.now())
             })
     }, [userToken, location, addRecentSeen])
 

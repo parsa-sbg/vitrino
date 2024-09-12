@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaShareAlt } from "react-icons/fa";
 import propTypes from 'prop-types'
+import { MdImageNotSupported } from "react-icons/md";
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 
@@ -20,7 +21,11 @@ export default function UserBookmarkBox({ bookMarkItem, showModal }) {
                     </div>
 
                     <div className="overflow-hidden h-[175.86px]  w-[300px] rounded-lg">
-                        <img className="object-cover h-full w-full" src={baseUrl + '/' + bookMarkItem.pics[0].path} alt="" />
+                        {
+                            bookMarkItem.pics[0]?.path
+                                ? <img className="h-full w-full object-cover" src={baseUrl + '/' + bookMarkItem.pics[0].path} alt="" />
+                                : <div className="bg-gray-300 dark:bg-gray-500 flex h-full items-center justify-center"><MdImageNotSupported size={40} /></div>
+                        }
                     </div>
                 </div>
             </Link>
@@ -30,7 +35,7 @@ export default function UserBookmarkBox({ bookMarkItem, showModal }) {
                     <FaShareAlt />
                     اشتراک گذاری
                 </button>
-                <button onClick={() => {showModal(bookMarkItem._id)}} className="flex items-center gap-2 w-full felx justify-center py-1 border dark:border-gray-500 rounded-lg">
+                <button onClick={() => { showModal(bookMarkItem._id) }} className="flex items-center gap-2 w-full felx justify-center py-1 border dark:border-gray-500 rounded-lg">
                     <FaTrashAlt />
                     حذف نشان
                 </button>

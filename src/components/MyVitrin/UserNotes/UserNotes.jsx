@@ -59,11 +59,6 @@ export default function UserNotes() {
             </div>
           )
       }
-      <div className=" md:pl-3 grid grid-cols-6 gap-3">
-        {userNotes.map(data => (
-          <UserNoteBox showDeleteModal={showDeleteModal} data={data} key={data._id} />
-        ))}
-      </div>
 
       <DeleteNoteModal getNotesFromServer={getNotesFromServer} noteId={deleteNoteId} hideDeleteModal={hideDeleteModal} isModalShow={isDeleteModalShow} />
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import propTypes from 'prop-types'
+import { MdImageNotSupported } from "react-icons/md";
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 export default function UserPostBox({ post, showDeleteModal }) {
@@ -9,7 +10,11 @@ export default function UserPostBox({ post, showDeleteModal }) {
 
       <div className="flex gap-2 h-full">
         <div className="overflow-hidden h-full min-w-[86.57px] rounded-lg">
-          <img className="object-cover h-full w-full" src={baseUrl + '/' + post.pics[0]?.path} alt="" />
+          {
+            post.pics[0]?.path
+              ? <img className="h-full w-full object-cover" src={baseUrl + '/' + post.pics[0].path} alt="" />
+              : <div className="bg-gray-300 dark:bg-gray-500 flex h-full items-center justify-center"><MdImageNotSupported size={40} /></div>
+          }
         </div>
         <div className="flex flex-col justify-between w-full">
           <h4 className="line-clamp-1 dark:text-white text-[#333] font-semibold">{post.title}</h4>
