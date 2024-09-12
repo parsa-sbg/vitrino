@@ -9,7 +9,7 @@ export default function New() {
     const [confiredCat, setConfiredCat] = useState(null)
 
     return (
-        <div className="min-h-screen pb-[500px] container">
+        <div className="min-h-screen pb-24 container">
 
             <div className="hidden md:block">
                 <Header noInput />
