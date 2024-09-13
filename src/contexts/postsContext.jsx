@@ -40,7 +40,8 @@ export default function PostsProvider({ children }) {
     }, [limit])
 
     useEffect(() => {
-        totalPostsLength == posts.length && setIsAllPostsWereShown(true)
+        console.log(totalPostsLength == posts.length);
+        setIsAllPostsWereShown(totalPostsLength == posts.length)
     }, [posts, totalPostsLength])
 
     useEffect(() => {
