@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback } from "react";
 import PostBox from "./PostBox";
 import usePosts from '../../hooks/usePosts'
 import NotFoundVector from "./NotFoundVector";
@@ -40,9 +40,6 @@ export default memo(function PostsList() {
     const maxHeigth = e.target.scrollHeight - e.target.offsetHeight
 
     if (currentHegith >= maxHeigth - 100 && !isAllPostsWereShown) {
-
-      // console.log('request');
-
       getMorePosts()
     }
   }, [getMorePosts, isAllPostsWereShown])

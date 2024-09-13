@@ -22,7 +22,6 @@ export default function PostsProvider({ children }) {
     const getMorePosts = useCallback(() => {
         if (!isAllPostsWereShown && !getMorePostsIsLoading) {
             setLimit(prev => prev + 10)
-            console.log('get moreee');
         }
     }, [isAllPostsWereShown, getMorePostsIsLoading])
 
@@ -31,7 +30,6 @@ export default function PostsProvider({ children }) {
             setGetMorePostsIsLoading(true)
             getPosts(confirmedCities, selectedCatId, limit)
                 .then(data => {
-                    console.log(data);
                     setTotalPostsLength(data.pagination.totalPosts)
                     setPosts(data.posts)
                     setGetMorePostsIsLoading(false)
@@ -40,7 +38,6 @@ export default function PostsProvider({ children }) {
     }, [limit])
 
     useEffect(() => {
-        console.log(totalPostsLength == posts.length);
         setIsAllPostsWereShown(totalPostsLength == posts.length)
     }, [posts, totalPostsLength])
 
@@ -50,7 +47,6 @@ export default function PostsProvider({ children }) {
         getPosts(confirmedCities, selectedCatId, limit)
             .then(data => {
                 setIsLoading(false)
-                console.log(data.pagination.totalPosts == posts.length);
                 setLimit(10)
                 setTotalPostsLength(data.pagination.totalPosts)
                 setPosts(data.posts)
