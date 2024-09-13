@@ -47,7 +47,7 @@ const PostImagesSlider = memo(({ images }) => {
             {images?.length
                 ? images.map(image => (
                     <SwiperSlide key={image._id}>
-                        <div className=" h-72 rounded-lg overflow-hidden">
+                        <div className=" h-72">
                             <img className="w-full h-full object-cover object-center" src={baseUrl + '/' + image.path} alt="" />
                         </div>
                     </SwiperSlide>
@@ -60,8 +60,8 @@ const PostImagesSlider = memo(({ images }) => {
 
             }
 
-            <div className="absolute top-0 bottom-0 right-0 z-50 flex justify-center items-center w-10 cursor-pointer transition-all duration-300 hover:bg-gray-200 !bg-opacity-30" onClick={handlePrev}><IoIosArrowForward size={20} /></div>
-            <div className="absolute top-0 bottom-0 left-0 z-50 flex justify-center items-center w-10 cursor-pointer transition-all duration-300 hover:bg-gray-200 !bg-opacity-30" onClick={handleNext}><IoIosArrowBack size={20} /></div>
+            <div className="absolute top-0 bottom-0 right-0 z-50 flex justify-center items-center w-10 cursor-pointer transition-all duration-300 hover:bg-gray-200 !bg-opacity-30 rounded-r-lg" onClick={handlePrev}><IoIosArrowForward size={20} /></div>
+            <div className="absolute top-0 bottom-0 left-0 z-50 flex justify-center items-center w-10 cursor-pointer transition-all duration-300 hover:bg-gray-200 !bg-opacity-30 rounded-l-lg" onClick={handleNext}><IoIosArrowBack size={20} /></div>
 
         </Swiper >
     );

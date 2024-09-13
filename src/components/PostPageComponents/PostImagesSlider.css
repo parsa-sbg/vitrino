@@ -1,6 +1,6 @@
 .swiper {
     user-select: none;
-    @apply !relative
+    @apply !relative rounded-lg overflow-hidden
 }
 
 .swiper-pagination {}
