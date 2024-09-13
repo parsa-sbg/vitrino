@@ -3,10 +3,12 @@ import Header from "../components/Header/Header";
 import MobileHeader from "../components/New/MobileHeader";
 import NewCatSelector from "../components/New/NewCatSelector/NewCatSelector";
 import NewPostDetails from "../components/New/NewPostDetails/NewPostDetails";
+import PostCreationAlert from "../components/New/PostCreationAlert";
 
 export default function New() {
 
     const [confiredCat, setConfiredCat] = useState(null)
+    const [PostPublishStatus, setPostPublishStatus] = useState({ isFinished: false, isPublishedSuccessFully: false })
 
     return (
         <div className="min-h-screen pb-24 container">
@@ -21,11 +23,13 @@ export default function New() {
             <div className="pt-[66.84px] md:pt-[90px] flex justify-center">
                 {
                     confiredCat
-                        ? <NewPostDetails confiredCat={confiredCat} setConfiredCat={setConfiredCat} />
+                        ? <NewPostDetails setPostPublishStatus={setPostPublishStatus} confiredCat={confiredCat} setConfiredCat={setConfiredCat} />
                         : <NewCatSelector setConfiredCat={setConfiredCat} />
                 }
             </div>
 
+
+            <PostCreationAlert setConfiredCat={setConfiredCat} PostPublishStatus={PostPublishStatus} />
         </div>
     )
 }

@@ -15,7 +15,7 @@ import { createNewPost } from '../../../services/api'
 import { useAuth } from '../../../hooks/useAuth'
 
 
-export default function NewPostDetails({ confiredCat, setConfiredCat }) {
+export default function NewPostDetails({ confiredCat, setConfiredCat, setPostPublishStatus }) {
 
 
     const { confirmedCities } = useLocations()
@@ -24,6 +24,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [validationObj, setValidationObj] = useState({})
 
     const [isFirstRender, setIsFirstRender] = useState(true)
+
+    const [creationIsLoading, setCreationIsLoading] = useState(false)
 
     // main datas
     const [selectedCity, setSelectedCity] = useState(confirmedCities[0])
@@ -46,7 +48,12 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
         if (isFirstRender) {
             setIsFirstRender(false)
         } else {
+            setCreationIsLoading(true)
             !res && createNewPost(confiredCat._id, userToken, selectedCity.id, newPostTitle, newPostDesc, +newPostPrice, newPostDynamicFields, postPics)
+                .then(status => {
+                    setCreationIsLoading(false)
+                    setPostPublishStatus({ isFinished: true, isPublishedSuccessFully: status == 200 })
+                })
         }
 
     }, [validationObj])
@@ -143,7 +150,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
             <div className='flex gap-5 justify-between mt-10'>
                 <CancelBtn />
-                <ConfirmBtn validationObj={validationObj} validateInputs={validateInputs} />
+                <ConfirmBtn creationIsLoading={creationIsLoading} validationObj={validationObj} validateInputs={validateInputs} />
             </div>
 
         </div>
@@ -153,5 +160,6 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
 NewPostDetails.propTypes = {
     confiredCat: propTypes.object,
-    setConfiredCat: propTypes.func
+    setConfiredCat: propTypes.func,
+    setPostPublishStatus: propTypes.func
 }

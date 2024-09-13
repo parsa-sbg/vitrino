@@ -161,7 +161,6 @@ const getUserBookMarks = async (token) => {
 }
 
 const publishNewPost = async (postId) => {
-    console.log(adminToken);
 
     const res = await doFetch(`/v1/post/${postId}/status`, {
         method: "PUT",
@@ -174,7 +173,7 @@ const publishNewPost = async (postId) => {
         })
     })
 
-    console.log("publish result => ", res);
+    return res.status
 }
 
 
@@ -200,7 +199,8 @@ const createNewPost = async (categoryId, userToken, cityId, title, description, 
         },
         body: formData
     })
-    publishNewPost(res.data.post._id)
+    return await publishNewPost(res.data.post._id)
+    
 }
 
 const getUserPosts = async (token) => {
