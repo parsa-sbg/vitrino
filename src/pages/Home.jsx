@@ -5,9 +5,19 @@ import SearchCity from "../components/homePage/SearchCity";
 import PopularCities from "../components/homePage/PopularCities";
 import Enamad from "../components/homePage/Enamad";
 import Socials from "../components/homePage/Socials";
+import { useLocations } from "../hooks/useLocations";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Home() {
+  const { confirmedCities } = useLocations()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    confirmedCities.length && navigate('/posts')
+  }, [confirmedCities, navigate])
+
   return (
 
 
