@@ -1,12 +1,18 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect, useRef } from "react";
 import PostBox from "./PostBox";
 import usePosts from '../../hooks/usePosts'
 import NotFoundVector from "./NotFoundVector";
+import { useLocations } from "../../hooks/useLocations";
+import { useCategory } from "../../hooks/useCategory";
 
 
 export default memo(function PostsList() {
 
   const { posts, isLoading, getMorePosts, getMorePostsIsLoading, isAllPostsWereShown } = usePosts()
+  const { confirmedCities } = useLocations()
+  const { selectedCatId } = useCategory()
+  const currentScrollHeigthRef = useRef(0)
+  const postsListRef = useRef(null)
 
   const generateSkeletonLoader = () => {
     const SkeleteLoaderCount = Array.from({ length: 10 })
@@ -34,12 +40,31 @@ export default memo(function PostsList() {
     ))
   }
 
+  useEffect(() => {
+    postsListRef.current && postsListRef.current.scrollTo(0, 0)
+  }, [confirmedCities, selectedCatId])
+
+  useEffect(() => {
+
+    const savedScrollTop = localStorage.getItem('scrollHeight')
+    if (postsListRef.current) {
+      postsListRef.current.scrollTo(0, savedScrollTop)
+    }
+
+    return () => {
+      localStorage.setItem('scrollHeight', currentScrollHeigthRef.current)
+    }
+  }, [])
+
+
 
   const onScrollHandler = useCallback((e) => {
     const currentHegith = e.target.scrollTop
     const maxHeigth = e.target.scrollHeight - e.target.offsetHeight
 
-    if (currentHegith >= maxHeigth - 100 && !isAllPostsWereShown) {
+    currentScrollHeigthRef.current = currentHegith
+
+    if (currentHegith >= maxHeigth - 60 && !isAllPostsWereShown) {
       getMorePosts()
     }
   }, [getMorePosts, isAllPostsWereShown])
@@ -59,6 +84,7 @@ export default memo(function PostsList() {
   return (
 
     <div
+      ref={postsListRef}
       onScroll={onScrollHandler}
       className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-fit custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
 

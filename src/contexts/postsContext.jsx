@@ -57,7 +57,6 @@ export default function PostsProvider({ children }) {
         <PostsContext.Provider
             value={{
                 posts,
-                setPosts,
                 isLoading,
                 getMorePostsIsLoading,
                 isAllPostsWereShown,
