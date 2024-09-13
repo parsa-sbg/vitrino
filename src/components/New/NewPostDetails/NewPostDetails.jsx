@@ -12,11 +12,11 @@ import ConfirmBtn from './ConfirmBtn'
 import CancelBtn from './CancelBtn'
 import PriceSelector from './PriceSelector'
 import { createNewPost } from '../../../services/api'
-import {useAuth} from '../../../hooks/useAuth'
+import { useAuth } from '../../../hooks/useAuth'
 
 
 export default function NewPostDetails({ confiredCat, setConfiredCat }) {
-    
+
 
     const { confirmedCities } = useLocations()
     const [selectedCityneighborhoods, setSelectedCityneighborhoods] = useState([])
@@ -31,14 +31,14 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
     const [postPics, setPostPics] = useState([])
     const [newPostTitle, setNewPostTitle] = useState('')
     const [newPostDesc, setNewPostDesc] = useState('')
-    const [newPostPrice, setNewPostPrice] = useState(null)
+    const [newPostPrice, setNewPostPrice] = useState('')
     const [newPostDynamicFields, setNewPostDynamicFields] = useState({})
 
-    const {userToken} = useAuth()
+    const { userToken } = useAuth()
 
 
     useEffect(() => {
-        
+
         const res = Object.values(validationObj).some(value => {
             return value == false
         })
@@ -46,7 +46,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
         if (isFirstRender) {
             setIsFirstRender(false)
         } else {
-            !res && createNewPost(confiredCat._id, userToken, selectedCity.id, newPostTitle, newPostDesc, newPostPrice, newPostDynamicFields, postPics)
+            !res && createNewPost(confiredCat._id, userToken, selectedCity.id, newPostTitle, newPostDesc, +newPostPrice, newPostDynamicFields, postPics)
         }
 
     }, [validationObj])
@@ -97,8 +97,8 @@ export default function NewPostDetails({ confiredCat, setConfiredCat }) {
 
         Object.keys(newPostDynamicFields).forEach(key => {
             const dynamicFieldType = confiredCat.productFields.find(field => field.slug == key).type
-            
-            if (!newPostDynamicFields[key].length && dynamicFieldType !== 'checkbox') {                
+
+            if (!newPostDynamicFields[key].length && dynamicFieldType !== 'checkbox') {
                 setValidationObj((prev) => {
                     const newObj = { ...prev }
                     newObj[key] = false

@@ -14,14 +14,14 @@ export default function PriceSelector({ newPostPrice, setNewPostPrice, validatio
         })
         if (validationObj.price == undefined) {
             setIsValid(true)
-        }else {
+        } else {
             setIsValid(validationObj.price)
         }
     }, [setValidationObj, validationObj])
 
 
     const onchangeHandler = (e) => {
-        setNewPostPrice(e.target.value)
+        !isNaN(+e.target.value) && setNewPostPrice(e.target.value)
         setIsValid(true)
     }
 
@@ -57,7 +57,7 @@ export default function PriceSelector({ newPostPrice, setNewPostPrice, validatio
         <div>
             <h5 className='text-lg mb-5 mt-10 font-semibold'>قیمت</h5>
             <input
-                type="number"
+                type="text"
                 onChange={onchangeHandler}
                 value={newPostPrice}
                 dir={newPostPrice ? "ltr" : "rtl"}
@@ -69,7 +69,7 @@ export default function PriceSelector({ newPostPrice, setNewPostPrice, validatio
 
 
 PriceSelector.propTypes = {
-    newPostPrice: propTypes.number,
+    newPostPrice: propTypes.string,
     setNewPostPrice: propTypes.func,
     validationObj: propTypes.object,
     setValidationObj: propTypes.func,
