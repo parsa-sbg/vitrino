@@ -26,7 +26,7 @@ export default memo(function BottomNav() {
                 </Link>
 
                 <button
-                    onClick={ () => {
+                    onClick={() => {
                         setIsMobileCatSelectorModalShow(true)
                     }}
                     className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
@@ -34,10 +34,11 @@ export default memo(function BottomNav() {
                     دسته‌ها
                 </button>
 
-                <Link to={'/new'} className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
+                <button onClick={() => {runWithLoginCheck(() => {navigate('/new')})}}
+                    className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
                     <FaPlusCircle />
                     ثبت آگهی
-                </Link>
+                </button>
 
                 <button onClick={() => { runWithLoginCheck(() => { navigate('/myvitrin') }) }} className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">
                     <FaUser />

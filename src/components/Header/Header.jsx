@@ -5,10 +5,16 @@ import HeaderMyVitrin from "./HeaderMyVitrin";
 import SiteBtn from "../SiteBtn";
 import { memo } from "react";
 import propTypes from 'prop-types'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginValidation } from "../../hooks/useLoginValidation";
 
 
-const Header = memo(({noInput}) => {
+const Header = memo(({ noInput }) => {
+
+    const runWithLoginCheck = useLoginValidation()
+    const navigate = useNavigate()
+
+
     return (
         <div className=" md:border-b-2 fixed top-0 z-50 right-0 left-0 bg-white dark:bg-[#222] md:dark:bg-[#242424]">
             <div className="container flex py-3 gap-4 justify-between items-center">
@@ -27,9 +33,11 @@ const Header = memo(({noInput}) => {
                 {/* header left */}
                 <div className="gap-2 hidden md:flex">
                     <HeaderMyVitrin />
-                    <Link to={'/new'} className="">
+
+                    <button onClick={() => {runWithLoginCheck(() => {navigate('/new')})}}>
                         <SiteBtn text={'ثبت آگهی'} />
-                    </Link>
+                    </button>
+
                 </div>
 
             </div>
