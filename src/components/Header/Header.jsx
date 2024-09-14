@@ -34,9 +34,9 @@ const Header = memo(({ noInput }) => {
                 <div className="gap-2 hidden md:flex">
                     <HeaderMyVitrin />
 
-                    <button onClick={() => {runWithLoginCheck(() => {navigate('/new')})}}>
+                    <div onClick={() => {runWithLoginCheck(() => {navigate('/new')})}}>
                         <SiteBtn text={'ثبت آگهی'} />
-                    </button>
+                    </div>
 
                 </div>
 

@@ -4,6 +4,7 @@ import LocationsProvider from './contexts/locationsContext'
 import CategoryProvider from './contexts/categoryContext'
 import AuthContextProvider from './contexts/authContext'
 import PostsProvider from './contexts/postsContext'
+import FiltersProvider from './contexts/filtersContext'
 
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
         <AuthContextProvider>
           <CategoryProvider>
             <PostsProvider>
+            <FiltersProvider>
               <Routes />
+            </FiltersProvider>
             </PostsProvider>
           </CategoryProvider>
         </AuthContextProvider>
