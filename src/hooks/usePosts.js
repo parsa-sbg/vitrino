@@ -1,14 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { getPosts } from "../services/api";
-import { useLocations } from "./useLocations";
-import { useCategory } from "./useCategory"
+import { useContext } from "react";
 import { PostsContext } from "../contexts/postsContext";
 
+const usePosts = () => useContext(PostsContext)
 
-export default function usePosts() {
-
-
-    return useContext(PostsContext)
-
-
-}
+export default usePosts

@@ -4,6 +4,7 @@ import usePosts from '../../hooks/usePosts'
 import NotFoundVector from "./NotFoundVector";
 import { useLocations } from "../../hooks/useLocations";
 import { useCategory } from "../../hooks/useCategory";
+import { useFilters } from "../../hooks/useFilters";
 
 
 export default memo(function PostsList() {
@@ -13,6 +14,16 @@ export default memo(function PostsList() {
   const { selectedCatId } = useCategory()
   const currentScrollHeigthRef = useRef(0)
   const postsListRef = useRef(null)
+
+
+  const { filtredPosts } = useFilters()
+
+  useEffect(() => {
+    if (filtredPosts.length < 10) {
+      getMorePosts()
+    }
+  }, [filtredPosts, getMorePosts])
+
 
   const generateSkeletonLoader = () => {
     const SkeleteLoaderCount = Array.from({ length: 10 })
@@ -69,7 +80,7 @@ export default memo(function PostsList() {
     }
   }, [getMorePosts, isAllPostsWereShown])
 
-  if (!posts?.length) return (
+  if (!filtredPosts?.length) return (
     <div className="col-span-12 md:col-span-8 overflow-y-scroll max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-100px)] -ml-4 pl-4 h-full custom-scrollbar lg:col-span-9 grid xl:col-span-9 grid-cols-6 sm:gap-4 md:gap-0 lg:gap-4">
       <div className="flex flex-col items-center justify-center w-full h-full col-span-12">
         <NotFoundVector />
@@ -90,7 +101,7 @@ export default memo(function PostsList() {
 
       {isLoading && generateSkeletonLoader()}
 
-      {!isLoading && posts.map(post => (
+      {!isLoading && filtredPosts.map(post => (
         <div
           key={post._id}
           className="h-40 col-span-6 sm:col-span-3 md:col-span-6 lg:col-span-3">
