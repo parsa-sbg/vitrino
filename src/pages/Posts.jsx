@@ -8,18 +8,19 @@ import { memo, useEffect } from "react"
 import PostsList from "../components/PostsPage/PostsList"
 import { useNavigate } from "react-router-dom"
 import LoginModal from "../components/LoginModal/LoginModal"
+import MobileFiltersSlider from "../components/PostsPage/MobileFiltersSlider"
 
 
 export default memo(function Posts() {
 
-    const {  confirmedCities } = useLocations()
+    const { confirmedCities } = useLocations()
     const navigate = useNavigate()
 
     useEffect(() => {
         if (!confirmedCities.length) {
             navigate("/")
         }
-        
+
     }, [confirmedCities, navigate])
 
     return (
@@ -33,10 +34,15 @@ export default memo(function Posts() {
                     <FiltersList />
                 </div>
 
+                <div className=" col-span-12 md:hidden">
+                    <MobileFiltersSlider />
+                </div>
+
                 <PostsList />
 
                 <CitySelectorModal />
                 <LoginModal />
+
 
             </div>
 
