@@ -36,9 +36,11 @@ RangeInput.propTypes = {
 
 }
 
-export default function RangeFilter({ callBack, minPlaceHolder, maxPlaceHolder }) {
-    const [min, setMin] = useState(0);
-    const [max, setMax] = useState(0);
+export default function RangeFilter({ callBack, minPlaceHolder, maxPlaceHolder, minValue, maxValue }) {
+    console.log(minValue);
+
+    const [min, setMin] = useState(minValue ? minValue : 0);
+    const [max, setMax] = useState(maxValue ? maxValue : 0);
 
     const sendDatas = () => {
         callBack({ min: min || null, max: max || null });
