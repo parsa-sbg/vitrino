@@ -23,6 +23,7 @@ export default function LoginModal() {
 
 
     const closeAndResetModal = () => {
+        setIsLoginWasSuccess(false)
         hideLoginModal()
         setNumber('')
         setIsOtpSent(false)

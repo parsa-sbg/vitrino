@@ -13,7 +13,12 @@ export default function LogOutModal({ isLogOutModalShow, hideLogOutModal, logOut
         <h4 className='text-[#333] dark:text-white'>خروج از حساب کاربری </h4>
         <div className='flex justify-between gap-5'>
           <button onClick={hideLogOutModal} className='w-full dark:border-gray-500 transition-colors hover:border-black dark:hover:border-white border rounded-lg py-1.5 px-5'>انصراف</button>
-          <button onClick={logOut} className='dark:border-gray-500 transition-colors hover:border-red-600 w-full border rounded-lg py-1.5 px-5'>تایید</button>
+          <button
+            onClick={() => {
+              logOut()
+              hideLogOutModal()
+            }}
+            className='dark:border-gray-500 transition-colors hover:border-red-600 w-full border rounded-lg py-1.5 px-5'>تایید</button>
         </div>
       </div>
 
