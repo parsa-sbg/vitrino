@@ -5,15 +5,17 @@ import { FaRegBookmark } from "react-icons/fa";
 import { GrNotes } from "react-icons/gr";
 import { RxCountdownTimer } from "react-icons/rx";
 
-import { MdLogout } from "react-icons/md";
 import { useAuth } from "../../hooks/useAuth";
 import LogOutBtn from "./LogOutBtn";
+import { IoIosColorPalette } from "react-icons/io";
+import { useTheme } from "../../hooks/useTheme"
 
 
 
 export default function MyVitrinMenu() {
 
     const { userName } = useAuth()
+    const { setIsThemeSelectorModalShow } = useTheme()
 
     return (
         <div className="h-full font-semibold text-md">
@@ -31,6 +33,13 @@ export default function MyVitrinMenu() {
                 <MyVitrinMenuItem href={'/myvitrin/bookmarks'} name={'نشان‌ها'} Icon={FaRegBookmark} />
                 <MyVitrinMenuItem href={'/myvitrin/notes'} name={'یادداشت‌ها'} Icon={GrNotes} />
                 <MyVitrinMenuItem href={'/myvitrin/recent-seens'} name={'بازدیدهای اخیر'} Icon={RxCountdownTimer} />
+
+                <button
+                    onClick={() => { setIsThemeSelectorModalShow(true) }}
+                    className={'transition-colors flex items-center gap-2 hover:bg-gray-300 dark:hover:bg-gray-500 !bg-opacity-30 py-2 px-1 rounded-md'}>
+                    <IoIosColorPalette />
+                    <span className="pb-1">تنظیمات ظاهر ویترینو</span>
+                </button>
             </div>
 
             <LogOutBtn />

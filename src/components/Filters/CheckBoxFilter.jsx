@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 
 
 export default function CheckBoxFilter({ name, callBack, isChecked }) {
-    console.log(isChecked);
-
 
     // const [isChecked, setIsChecked] = useState(false)
 

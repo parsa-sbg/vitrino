@@ -5,7 +5,7 @@ import HeaderMyVitrin from "./HeaderMyVitrin";
 import SiteBtn from "../SiteBtn";
 import { memo } from "react";
 import propTypes from 'prop-types'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLoginValidation } from "../../hooks/useLoginValidation";
 
 
@@ -34,7 +34,7 @@ const Header = memo(({ noInput }) => {
                 <div className="gap-2 hidden md:flex">
                     <HeaderMyVitrin />
 
-                    <div onClick={() => {runWithLoginCheck(() => {navigate('/new')})}}>
+                    <div onClick={() => { runWithLoginCheck(() => { navigate('/new') }) }}>
                         <SiteBtn text={'ثبت آگهی'} />
                     </div>
 

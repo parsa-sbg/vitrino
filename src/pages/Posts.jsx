@@ -9,6 +9,7 @@ import PostsList from "../components/PostsPage/PostsList"
 import { useNavigate } from "react-router-dom"
 import LoginModal from "../components/LoginModal/LoginModal"
 import MobileFiltersSlider from "../components/PostsPage/MobileFiltersSlider"
+import ThemeSelectorModal from "../components/ThemeSelectorModal/ThemeSelectorModal"
 
 
 export default memo(function Posts() {
@@ -42,6 +43,7 @@ export default memo(function Posts() {
 
                 <CitySelectorModal />
                 <LoginModal />
+                <ThemeSelectorModal />
 
 
             </div>

@@ -11,32 +11,24 @@ export default function FiltersProvider({ children }) {
     const { posts } = usePosts()
 
     useEffect(() => {
-        console.log(filtredPosts);
-
     }, [filtredPosts])
 
 
     useEffect(() => {
-        // console.log('filters => ', filters);
 
         let newFiltredPosts = [...posts]
 
-        console.log('min => ', filters.price.min);
-        console.log('max => ', filters.price.max);
 
         ////  set price filter ////
         if (filters.price.max && filters.price.min) {
-            console.log('both');
 
             newFiltredPosts = posts.filter(post => post.price <= filters.price.max && post.price >= filters.price.min)
         } else if (filters.price.min) {
-            console.log('just min');
 
             newFiltredPosts = posts.filter(post => {
                 return post.price >= filters.price.min
             })
         } else if (filters.price.max) {
-            console.log('just max');
 
             newFiltredPosts = posts.filter(post => {
                 return post.price <= filters.price.max

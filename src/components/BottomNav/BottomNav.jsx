@@ -17,7 +17,7 @@ export default memo(function BottomNav() {
     const navigate = useNavigate()
 
     return (
-        <div className="border-t-2 z-50 fixed bottom-0 right-0 left-0 bg-white dark:bg-[#222]">
+        <div className="border-t-2 z-40 fixed bottom-0 right-0 left-0 bg-white dark:bg-[#222]">
             <div className="md:hidden grid grid-cols-4">
 
                 <Link to={'/posts'} className="dark:hover:bg-gray-700 flex flex-col items-center justify-center gap-1 transition-colors duration-300 hover:bg-gray-100 py-2 text-center">

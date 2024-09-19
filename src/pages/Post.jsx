@@ -14,6 +14,7 @@ import LoginMidal from '../components/LoginModal/LoginModal'
 import { useAuth } from "../hooks/useAuth";
 import { useRecentSeens } from "../hooks/useRecentSeens";
 import CitySelectorModal from '../components/CitySelectorModal/CitySelectorModal'
+import ThemeSelectorModal from "../components/ThemeSelectorModal/ThemeSelectorModal";
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -60,6 +61,7 @@ export default function Post() {
 
                 <LoginMidal />
                 <CitySelectorModal />
+                <ThemeSelectorModal />
             </div>
 
         </div>

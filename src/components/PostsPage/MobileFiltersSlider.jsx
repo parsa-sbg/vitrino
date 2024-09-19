@@ -9,8 +9,6 @@ export default memo(function MobileFiltersSlider() {
 
     const { filters } = useFilters()
     const [isFiltesListShow, setIsFiltesListShow] = useState(false)
-    console.log(filters);
-
 
     return (
         <div className=''>

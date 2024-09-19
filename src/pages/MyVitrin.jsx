@@ -5,6 +5,7 @@ import MobileMyVitrinHeader from "../components/MyVitrin/MobileMyVitrinHeader"
 import CitySelectorModal from "../components/CitySelectorModal/CitySelectorModal"
 import MyVitrinMenu from "../components/MyVitrin/MyVitrinMenu"
 import { useLocation } from "react-router-dom"
+import ThemeSelectorModal from "../components/ThemeSelectorModal/ThemeSelectorModal"
 
 
 export default function MyVitrin() {
@@ -34,6 +35,7 @@ export default function MyVitrin() {
                 </div>
 
             </div>
+            <ThemeSelectorModal />
 
             <CitySelectorModal />
             

@@ -37,7 +37,6 @@ RangeInput.propTypes = {
 }
 
 export default function RangeFilter({ callBack, minPlaceHolder, maxPlaceHolder, minValue, maxValue }) {
-    console.log(minValue);
 
     const [min, setMin] = useState(minValue ? minValue : 0);
     const [max, setMax] = useState(maxValue ? maxValue : 0);
