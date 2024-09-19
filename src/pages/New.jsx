@@ -4,6 +4,7 @@ import MobileHeader from "../components/New/MobileHeader";
 import NewCatSelector from "../components/New/NewCatSelector/NewCatSelector";
 import NewPostDetails from "../components/New/NewPostDetails/NewPostDetails";
 import PostCreationAlert from "../components/New/PostCreationAlert";
+import CitySelectorModal from '../components/CitySelectorModal/CitySelectorModal'
 
 export default function New() {
 
@@ -30,6 +31,7 @@ export default function New() {
 
 
             <PostCreationAlert setConfiredCat={setConfiredCat} PostPublishStatus={PostPublishStatus} />
+            <CitySelectorModal />
         </div>
     )
 }

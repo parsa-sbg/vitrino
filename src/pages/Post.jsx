@@ -13,6 +13,7 @@ import PostNote from "../components/PostPageComponents/PostNote";
 import LoginMidal from '../components/LoginModal/LoginModal'
 import { useAuth } from "../hooks/useAuth";
 import { useRecentSeens } from "../hooks/useRecentSeens";
+import CitySelectorModal from '../components/CitySelectorModal/CitySelectorModal'
 
 export default function Post() {
     const [postData, setPostdata] = useState()
@@ -58,6 +59,7 @@ export default function Post() {
                 </div>
 
                 <LoginMidal />
+                <CitySelectorModal />
             </div>
 
         </div>
