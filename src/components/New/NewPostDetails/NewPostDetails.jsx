@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 import SiteBtn from '../../SiteBtn'
-import CitySelector from './citySelector'
+import CitySelector from './CitySelector'
 import { useCallback, useEffect, useState } from 'react'
 import { useLocations } from '../../../hooks/useLocations'
 import NeighborhoodSelector from './NeighborhoodSelector'
