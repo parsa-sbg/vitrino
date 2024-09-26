@@ -9,7 +9,7 @@ export default function UserPostBox({ post, showDeleteModal }) {
     <Link className="col-span-6 flex flex-col sm:h-28 sm:gap-7 lg:gap-10 sm:flex-row justify-between gap-2 p-3 rounded-lg border dark:border-gray-500">
 
       <div className="flex gap-2 h-full">
-        <div className="overflow-hidden h-full min-w-[86.57px] rounded-lg">
+        <div className="overflow-hidden h-full min-w-[150px] md:min-w-[86.57px] max-h-[150px] rounded-lg">
           {
             post.pics[0]?.path
               ? <img className="h-full w-full object-cover" src={baseUrl + '/' + post.pics[0].path} alt="" />

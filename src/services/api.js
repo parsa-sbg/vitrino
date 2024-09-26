@@ -173,6 +173,9 @@ const publishNewPost = async (postId) => {
         })
     })
 
+    // console.log('publish result => ' , res);
+
+
     return res.status
 }
 
@@ -200,7 +203,7 @@ const createNewPost = async (categoryId, userToken, cityId, title, description, 
         body: formData
     })
     return await publishNewPost(res.data.post._id)
-    
+
 }
 
 const getUserPosts = async (token) => {
