@@ -52,7 +52,7 @@ export default function NewPostDetails({ confiredCat, setConfiredCat, setPostPub
             !res && createNewPost(confiredCat._id, userToken, selectedCity.id, newPostTitle, newPostDesc, +newPostPrice, newPostDynamicFields, postPics)
                 .then(status => {
                     setCreationIsLoading(false)
-                    setPostPublishStatus({ isFinished: true, isPublishedSuccessFully: status == 200 })
+                    setPostPublishStatus({ isFinished: true, isPublishedSuccessFully: status == 201 })
                 })
         }
 
